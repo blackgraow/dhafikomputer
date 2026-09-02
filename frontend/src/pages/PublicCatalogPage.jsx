@@ -137,7 +137,7 @@ const PublicCatalogPage = () => {
 
       {/* 2. BREADCRUMB & PAGE HEADER */}
       <div className="bg-white border-b border-slate-200/80 pt-8 pb-10">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+        <div className="max-w-300 mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
           
           {/* Breadcrumb: Beranda / Laptop */}
           <nav className="flex items-center gap-2 text-xs font-medium text-slate-500">
@@ -171,7 +171,7 @@ const PublicCatalogPage = () => {
 
       {/* 3. MAIN CATALOG AREA */}
       <main className="flex-1 py-10">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="max-w-300 mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           
           {/* Search & Filter Toolbar */}
           <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-soft space-y-3">
@@ -185,7 +185,7 @@ const PublicCatalogPage = () => {
                   placeholder="Cari nama laptop, processor, brand..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white transition-colors"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none transition-colors"
                 />
               </div>
 
@@ -194,7 +194,7 @@ const PublicCatalogPage = () => {
                 <select
                   value={selectedBrand}
                   onChange={(e) => setSelectedBrand(e.target.value)}
-                  className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 text-xs focus:outline-none focus:border-blue-600"
+                  className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 text-xs focus:outline-none"
                 >
                   <option value="">Semua Brand</option>
                   {brands.map(b => (
@@ -208,7 +208,7 @@ const PublicCatalogPage = () => {
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 text-xs focus:outline-none focus:border-blue-600"
+                  className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 text-xs focus:outline-none"
                 >
                   <option value="">Semua Kategori</option>
                   {categories.map(c => (
@@ -222,7 +222,7 @@ const PublicCatalogPage = () => {
                 <select
                   value={selectedCondition}
                   onChange={(e) => setSelectedCondition(e.target.value)}
-                  className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 text-xs focus:outline-none focus:border-blue-600"
+                  className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 text-xs focus:outline-none"
                 >
                   <option value="">Semua Kondisi</option>
                   <option value="BARU">Laptop Baru</option>
@@ -235,7 +235,7 @@ const PublicCatalogPage = () => {
                 <select
                   value={sortPrice}
                   onChange={(e) => setSortPrice(e.target.value)}
-                  className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 text-xs focus:outline-none focus:border-blue-600"
+                  className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 text-xs focus:outline-none"
                 >
                   <option value="">Urutkan Harga</option>
                   <option value="asc">Harga: Rendah ke Tinggi</option>

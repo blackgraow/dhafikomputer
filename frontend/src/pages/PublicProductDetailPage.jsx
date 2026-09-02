@@ -166,7 +166,7 @@ const PublicProductDetailPage = () => {
                       <button
                         key={idx}
                         onClick={() => setActiveImageIndex(idx)}
-                        className={`relative w-20 h-14 rounded-xl overflow-hidden border-2 flex-shrink-0 transition-all cursor-pointer ${
+                        className={`relative w-20 h-14 rounded-xl overflow-hidden border-2 shrink-0 transition-all cursor-pointer ${
                           activeImageIndex === idx ? 'border-blue-600 scale-102 shadow-sm' : 'border-slate-200 opacity-60 hover:opacity-100'
                         }`}
                       >
