@@ -257,7 +257,7 @@ const AdminDashboardPage = () => {
         <div className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-sm space-y-3 hover:shadow-md transition-all">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-600 leading-tight">Estimasi Nilai Stok Fisik Inventaris</span>
-            <div className="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center border border-indigo-100/60 flex-shrink-0">
+            <div className="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center border border-indigo-100/60 shrink-0">
               <DollarSign className="w-4 h-4" />
             </div>
           </div>
@@ -405,7 +405,7 @@ const AdminDashboardPage = () => {
                         {/* Tanggal with Calendar Icon */}
                         <td className="py-3 px-3">
                           <div className="flex items-center gap-2">
-                            <div className="w-7 h-7 rounded-lg bg-slate-50 border border-slate-200/80 flex items-center justify-center text-slate-400 flex-shrink-0">
+                            <div className="w-7 h-7 rounded-lg bg-slate-50 border border-slate-200/80 flex items-center justify-center text-slate-400 shrink-0">
                               <Calendar className="w-3.5 h-3.5" />
                             </div>
                             <span className="font-medium text-slate-600">{formatDate(tx.transaction_date)}</span>
@@ -430,7 +430,7 @@ const AdminDashboardPage = () => {
                         </td>
 
                         {/* Laptop / Customer / Dealer Source */}
-                        <td className="py-3 px-3 font-medium text-slate-800 max-w-[200px] truncate">
+                        <td className="py-3 px-3 font-medium text-slate-800 max-w-50 truncate">
                           {tx.source_destination ? (
                             <span>{tx.source_destination}</span>
                           ) : (

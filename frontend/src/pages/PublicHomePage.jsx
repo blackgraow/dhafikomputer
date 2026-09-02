@@ -231,7 +231,7 @@ const PublicHomePage = () => {
           2. HERO SECTION (SPLIT 2 COLUMNS)
           ======================================================== */}
       <section id="beranda" className="relative bg-white border-b border-slate-200/80 overflow-hidden pt-8 pb-16 lg:py-20">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-300 mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             
             {/* Left Column: Hero Copy & CTA */}
@@ -311,7 +311,7 @@ const PublicHomePage = () => {
               <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-cyan-400/10 rounded-full blur-2xl pointer-events-none" />
 
               {/* Dot Grid Background */}
-              <div className="absolute inset-0 bg-[radial-gradient(#2563eb_1px,transparent_1px)] [background-size:16px_16px] opacity-15 pointer-events-none rounded-2xl" />
+              <div className="absolute inset-0 bg-[radial-gradient(#2563eb_1px,transparent_1px)] bg-size-[16px_16px] opacity-15 pointer-events-none rounded-2xl" />
 
               {/* Main Laptop Showcase Card */}
             <div className="lg:col-span-6">
@@ -334,7 +334,7 @@ const PublicHomePage = () => {
           3. TENTANG KAMI (SPLIT 2 COLUMNS)
           ======================================================== */}
       <section id="tentang" className="py-16 sm:py-20 bg-[#F8FAFC] border-b border-slate-200/80">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-300 mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Left: Foto Interior Toko Modern */}
@@ -397,7 +397,7 @@ const PublicHomePage = () => {
           4. JENIS LAPTOP (TWO LARGE CARDS SIDE-BY-SIDE)
           ======================================================== */}
       <section id="jenis-laptop" className="py-16 sm:py-20 bg-white border-b border-slate-200/80">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <div className="max-w-300 mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           
           <div className="text-center max-w-2xl mx-auto space-y-2">
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B1F3A] tracking-tight">
@@ -411,7 +411,7 @@ const PublicHomePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             
             {/* Card 1 — Laptop Baru */}
-            <div className="relative rounded-2xl bg-gradient-to-br from-[#0B1F3A] to-slate-900 border border-slate-800 p-8 text-white flex flex-col justify-between space-y-6 shadow-xl group overflow-hidden">
+            <div className="relative rounded-2xl bg-linear-to-br from-[#0B1F3A] to-slate-900 border border-slate-800 p-8 text-white flex flex-col justify-between space-y-6 shadow-xl group overflow-hidden">
               <div className="space-y-3 relative z-10">
                 <h3 className="text-2xl font-bold text-white tracking-tight">Laptop Baru</h3>
                 <p className="text-sm text-slate-300 leading-relaxed max-w-md">
@@ -419,7 +419,7 @@ const PublicHomePage = () => {
                 </p>
               </div>
 
-              <div className="relative z-10 aspect-16/9 rounded-xl overflow-hidden bg-slate-950 border border-slate-700/60 shadow-md">
+              <div className="relative z-10 aspect-video rounded-xl overflow-hidden bg-slate-950 border border-slate-700/60 shadow-md">
                 <img
                   src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80"
                   alt="Laptop Baru Dhafi Komputer"
@@ -439,7 +439,7 @@ const PublicHomePage = () => {
             </div>
 
             {/* Card 2 — Laptop Second */}
-            <div className="relative rounded-2xl bg-gradient-to-br from-[#0B1F3A] to-slate-900 border border-slate-800 p-8 text-white flex flex-col justify-between space-y-6 shadow-xl group overflow-hidden">
+            <div className="relative rounded-2xl bg-linear-to-br from-[#0B1F3A] to-slate-900 border border-slate-800 p-8 text-white flex flex-col justify-between space-y-6 shadow-xl group overflow-hidden">
               <div className="space-y-3 relative z-10">
                 <h3 className="text-2xl font-bold text-white tracking-tight">Laptop Second</h3>
                 <p className="text-sm text-slate-300 leading-relaxed max-w-md">
@@ -447,7 +447,7 @@ const PublicHomePage = () => {
                 </p>
               </div>
 
-              <div className="relative z-10 aspect-16/9 rounded-xl overflow-hidden bg-slate-950 border border-slate-700/60 shadow-md">
+              <div className="relative z-10 aspect-video rounded-xl overflow-hidden bg-slate-950 border border-slate-700/60 shadow-md">
                 <img
                   src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=800&auto=format&fit=crop&q=80"
                   alt="Laptop Second Dhafi Komputer"
@@ -475,7 +475,7 @@ const PublicHomePage = () => {
           5. PRODUK TERSEDIA (HORIZONTAL CAROUSEL SLIDER)
           ======================================================== */}
       <section id="produk" className="py-16 sm:py-20 bg-[#F8FAFC] border-b border-slate-200/80">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div className="max-w-300 mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           
           {/* Section Header with Left Title & Right Actions (Lihat Semua Produk Link) + Carousel Arrows */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
@@ -506,7 +506,7 @@ const PublicHomePage = () => {
               {[1, 2, 3, 4].map(n => (
                 <div
                   key={n}
-                  className="flex-none w-[265px] rounded-2xl bg-white border border-slate-200 p-4 space-y-4 animate-pulse"
+                  className="flex-none w-66.25 rounded-2xl bg-white border border-slate-200 p-4 space-y-4 animate-pulse"
                 >
                   <div className="aspect-4/3 bg-slate-100 rounded-xl" />
                   <div className="space-y-2">
@@ -538,7 +538,7 @@ const PublicHomePage = () => {
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUpOrLeave}
               onMouseLeave={handleMouseUpOrLeave}
-              className="flex items-stretch gap-4 sm:gap-5 overflow-x-auto flex-nowrap py-3 px-1 scroll-smooth select-none cursor-grab active:cursor-grabbing [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              className="flex items-stretch gap-4 sm:gap-5 overflow-x-auto flex-nowrap py-3 px-1 scroll-smooth select-none cursor-grab [-ms-overflow-style:none] scrollbar-none"
               style={{
                 WebkitOverflowScrolling: 'touch'
               }}
@@ -546,7 +546,7 @@ const PublicHomePage = () => {
               {products.map((laptop) => (
                 <div
                   key={laptop.id}
-                  className="flex-none w-[78vw] sm:w-[245px] md:w-[255px] lg:w-[265px] rounded-2xl bg-white border border-slate-200 overflow-hidden shadow-soft hover:shadow-card-hover hover:border-slate-300 transition-all flex flex-col justify-between group"
+                  className="flex-none w-[78vw] sm:w-61.25 md:w-63.75 lg:w-66.25 rounded-2xl bg-white border border-slate-200 overflow-hidden shadow-soft hover:shadow-card-hover hover:border-slate-300 transition-all flex flex-col justify-between group"
                 >
                   {/* Card Image */}
                   <div className="relative aspect-4/3 bg-white overflow-hidden border-b border-slate-100 flex items-center justify-center p-3">
@@ -641,7 +641,7 @@ const PublicHomePage = () => {
           6. KEUNGGULAN DHAFI KOMPUTER (4 FEATURES IN ONE ROW)
           ======================================================== */}
       <section id="keunggulan" className="py-16 sm:py-20 bg-white border-b border-slate-200/80">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <div className="max-w-300 mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           
           <div className="text-center max-w-2xl mx-auto space-y-2">
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B1F3A] tracking-tight">
@@ -706,7 +706,7 @@ const PublicHomePage = () => {
           7. INFORMASI TOKO (SPLIT 2 COLUMNS + MAPS PLACEHOLDER)
           ======================================================== */}
       <section id="kontak" className="py-16 sm:py-20 bg-[#F8FAFC] border-b border-slate-200/80">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <div className="max-w-300 mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           
           <div className="space-y-2">
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B1F3A] tracking-tight">
@@ -723,7 +723,7 @@ const PublicHomePage = () => {
                 
                 {/* Alamat (Clickable to Google Maps) */}
                 <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0 border border-blue-100">
+                  <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div>
@@ -736,7 +736,7 @@ const PublicHomePage = () => {
 
                 {/* Jam Operasional */}
                 <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0 border border-blue-100">
+                  <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100">
                     <Clock className="w-4 h-4" />
                   </div>
                   <div>
@@ -749,7 +749,7 @@ const PublicHomePage = () => {
 
                 {/* Kontak */}
                 <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0 border border-blue-100">
+                  <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100">
                     <Phone className="w-4 h-4" />
                   </div>
                   <div>
@@ -762,7 +762,7 @@ const PublicHomePage = () => {
 
                 {/* Email */}
                 <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0 border border-blue-100">
+                  <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100">
                     <Mail className="w-4 h-4" />
                   </div>
                   <div>
@@ -803,7 +803,7 @@ const PublicHomePage = () => {
             >
               <div className="relative w-full h-80 sm:h-96 rounded-xl bg-slate-100 overflow-hidden flex items-center justify-center border border-slate-200">
                 {/* Map Grid Pattern Background */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:24px_24px] opacity-60" />
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-size-[24px_24px] opacity-60" />
 
                 {/* Decorative Roads / Rivers */}
                 <svg className="absolute inset-0 w-full h-full text-slate-200/80 pointer-events-none" xmlns="http://www.w3.org/2000/svg">

@@ -218,8 +218,8 @@ const AdminMasterDealerCreatePage = () => {
                 required
                 value={formData.name}
                 onChange={(e) => handleInputChange('name', e.target.value)}
-                className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 text-xs font-semibold focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-100 transition-all ${
-                  errors.name ? 'border-rose-300 focus:border-rose-500' : 'border-slate-200 focus:border-blue-600'
+                className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all ${
+                  errors.name ? 'border-rose-300' : 'border-slate-200'
                 }`}
               />
               {errors.name && <span className="text-[11px] text-rose-500 font-medium block">{errors.name}</span>}
@@ -234,7 +234,7 @@ const AdminMasterDealerCreatePage = () => {
                   type="text"
                   value={formData.contact}
                   onChange={(e) => handleInputChange('contact', e.target.value)}
-                  className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-mono focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all"
+                  className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-mono focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
                 />
               </div>
             </div>
@@ -248,7 +248,7 @@ const AdminMasterDealerCreatePage = () => {
                   maxLength={255}
                   value={formData.address}
                   onChange={(e) => handleInputChange('address', e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all resize-none"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all resize-none"
                 />
               </div>
             </div>
@@ -259,7 +259,7 @@ const AdminMasterDealerCreatePage = () => {
               <select
                 value={formData.status}
                 onChange={(e) => handleInputChange('status', e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-semibold focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all cursor-pointer"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all cursor-pointer"
               >
                 <option value="AKTIF">Aktif</option>
                 <option value="NONAKTIF">Tidak Aktif</option>
@@ -274,7 +274,7 @@ const AdminMasterDealerCreatePage = () => {
                 maxLength={255}
                 value={formData.notes}
                 onChange={(e) => handleInputChange('notes', e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all resize-none"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all resize-none"
               />
               <div className="text-right text-[11px] text-slate-400 font-mono">
                 {formData.notes.length} / 255
@@ -293,7 +293,7 @@ const AdminMasterDealerCreatePage = () => {
               <button
                 type="submit"
                 disabled={submitting || !formData.name.trim()}
-                className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-md shadow-blue-600/20 flex items-center gap-2 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed active:scale-98"
+                className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-md shadow-blue-600/20 flex items-center gap-2 transition-all cursor-pointer disabled:opacity-50 active:scale-98"
               >
                 <Save className="w-4 h-4" />
                 <span>{submitting ? 'Menyimpan...' : 'Simpan Master Dealer'}</span>

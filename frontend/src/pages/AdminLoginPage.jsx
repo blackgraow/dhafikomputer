@@ -47,7 +47,7 @@ const AdminLoginPage = () => {
       {/* ========================================================
           LEFT 50% — DARK NAVY BRANDING & VISUAL AREA (#0B1026)
           ======================================================== */}
-      <div className="lg:col-span-6 bg-gradient-to-b from-[#07142F] via-[#0B1026] to-[#020617] text-white relative overflow-hidden flex flex-col justify-between p-8 sm:p-12 lg:p-14 border-b lg:border-b-0 lg:border-r border-slate-800/80">
+      <div className="lg:col-span-6 bg-linear-to-b from-[#07142F] via-[#0B1026] to-[#020617] text-white relative overflow-hidden flex flex-col justify-between p-8 sm:p-12 lg:p-14 border-b lg:border-b-0 lg:border-r border-slate-800/80">
         
         {/* Subtle Ambient Light Gradients */}
         <div className="absolute top-0 right-0 -mt-24 -mr-24 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
@@ -125,7 +125,7 @@ const AdminLoginPage = () => {
         </div>
 
         {/* Center: Login Form Card */}
-        <div className="my-8 lg:my-auto max-w-[420px] w-full mx-auto space-y-7">
+        <div className="my-8 lg:my-auto max-w-105 w-full mx-auto space-y-7">
           
           {/* Brand Logo & Headings */}
           <div className="space-y-3">
@@ -149,7 +149,7 @@ const AdminLoginPage = () => {
           {/* Error Alert */}
           {error && (
             <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700 flex items-center gap-2.5 animate-in fade-in duration-150">
-              <AlertCircle className="w-4 h-4 flex-shrink-0 text-red-600" />
+              <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
               <span>{error}</span>
             </div>
           )}
@@ -168,7 +168,7 @@ const AdminLoginPage = () => {
                   placeholder="Masukkan username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="w-full pl-10 pr-4 h-12 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-blue-600 focus:bg-white focus:ring-4 focus:ring-blue-100/60 transition-all placeholder:text-slate-400"
+                  className="w-full pl-10 pr-4 h-12 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:ring-4 focus:ring-blue-100/60 transition-all"
                 />
               </div>
             </div>
@@ -184,7 +184,7 @@ const AdminLoginPage = () => {
                   placeholder="Masukkan password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-10 pr-11 h-12 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-blue-600 focus:bg-white focus:ring-4 focus:ring-blue-100/60 transition-all placeholder:text-slate-400"
+                  className="w-full pl-10 pr-11 h-12 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:ring-4 focus:ring-blue-100/60 transition-all"
                 />
                 <button
                   type="button"

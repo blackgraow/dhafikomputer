@@ -254,7 +254,7 @@ const AdminLaptopCreatePage = () => {
             ? 'bg-rose-50 text-rose-800 border-rose-200'
             : 'bg-emerald-50 text-emerald-800 border-emerald-200'
         }`}>
-          {toast.type === 'error' ? <AlertCircle className="w-4 h-4 text-rose-600 flex-shrink-0" /> : <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />}
+          {toast.type === 'error' ? <AlertCircle className="w-4 h-4 text-rose-600 shrink-0" /> : <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />}
           <span>{toast.message}</span>
         </div>
       )}
@@ -338,8 +338,8 @@ const AdminLaptopCreatePage = () => {
                     setFormData({ ...formData, code: e.target.value });
                     if (errors.code) setErrors({ ...errors, code: null });
                   }}
-                  className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 font-mono text-xs transition-colors focus:outline-none focus:bg-white ${
-                    errors.code ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200 focus:border-blue-600'
+                  className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 font-mono text-xs transition-colors focus:outline-none ${
+                    errors.code ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200'
                   }`}
                 />
                 {errors.code && <p className="text-[10px] text-rose-500 mt-1 font-medium">{errors.code}</p>}
@@ -355,8 +355,8 @@ const AdminLaptopCreatePage = () => {
                     setFormData({ ...formData, name: e.target.value });
                     if (errors.name) setErrors({ ...errors, name: null });
                   }}
-                  className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 text-xs transition-colors focus:outline-none focus:bg-white ${
-                    errors.name ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200 focus:border-blue-600'
+                  className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 text-xs transition-colors focus:outline-none ${
+                    errors.name ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200'
                   }`}
                 />
                 {errors.name && <p className="text-[10px] text-rose-500 mt-1 font-medium">{errors.name}</p>}
@@ -371,8 +371,8 @@ const AdminLaptopCreatePage = () => {
                     setFormData({ ...formData, brand_id: e.target.value });
                     if (errors.brand_id) setErrors({ ...errors, brand_id: null });
                   }}
-                  className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 text-xs transition-colors focus:outline-none focus:bg-white cursor-pointer ${
-                    errors.brand_id ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200 focus:border-blue-600'
+                  className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 text-xs transition-colors focus:outline-none cursor-pointer ${
+                    errors.brand_id ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200'
                   }`}
                 >
                   <option value="">Pilih Merek</option>
@@ -392,8 +392,8 @@ const AdminLaptopCreatePage = () => {
                     setFormData({ ...formData, category_id: e.target.value });
                     if (errors.category_id) setErrors({ ...errors, category_id: null });
                   }}
-                  className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 text-xs transition-colors focus:outline-none focus:bg-white cursor-pointer ${
-                    errors.category_id ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200 focus:border-blue-600'
+                  className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 text-xs transition-colors focus:outline-none cursor-pointer ${
+                    errors.category_id ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200'
                   }`}
                 >
                   <option value="">Pilih Kategori</option>
@@ -431,7 +431,7 @@ const AdminLaptopCreatePage = () => {
                       source_type: cond === 'BARU' ? 'MASTER_DEALER' : 'DEALER'
                     });
                   }}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-semibold transition-colors focus:outline-none focus:border-blue-600 focus:bg-white cursor-pointer"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-semibold transition-colors focus:outline-none cursor-pointer"
                 >
                   <option value="BARU">Laptop Baru</option>
                   <option value="SECOND">Laptop Second</option>
@@ -448,8 +448,8 @@ const AdminLaptopCreatePage = () => {
                       setFormData({ ...formData, master_dealer_id: e.target.value });
                       if (errors.master_dealer_id) setErrors({ ...errors, master_dealer_id: null });
                     }}
-                    className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 text-xs transition-colors focus:outline-none focus:bg-white cursor-pointer ${
-                      errors.master_dealer_id ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200 focus:border-blue-600'
+                    className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 text-xs transition-colors focus:outline-none cursor-pointer ${
+                      errors.master_dealer_id ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200'
                     }`}
                   >
                     <option value="">Pilih Master Dealer (MD 1, MD 2, MD 3)</option>
@@ -465,7 +465,7 @@ const AdminLaptopCreatePage = () => {
                   <select
                     value={formData.source_type}
                     onChange={(e) => setFormData({ ...formData, source_type: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs transition-colors focus:outline-none focus:border-blue-600 focus:bg-white cursor-pointer"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs transition-colors focus:outline-none cursor-pointer"
                   >
                     <option value="DEALER">Dealer (Toko Lain)</option>
                     <option value="PEMILIK">Pemilik / Customer Langsung</option>
@@ -482,7 +482,7 @@ const AdminLaptopCreatePage = () => {
                 <select
                   value={formData.dealer_id}
                   onChange={(e) => setFormData({ ...formData, dealer_id: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                 >
                   <option value="">Pilih Dealer Mitra</option>
                   {dealers.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
@@ -499,7 +499,7 @@ const AdminLaptopCreatePage = () => {
                     placeholder="e.g. Budi Santoso"
                     value={formData.customer_name}
                     onChange={(e) => setFormData({ ...formData, customer_name: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                   />
                 </div>
                 <div>
@@ -509,7 +509,7 @@ const AdminLaptopCreatePage = () => {
                     placeholder="0812-xxxx-xxxx"
                     value={formData.customer_contact}
                     onChange={(e) => setFormData({ ...formData, customer_contact: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                   />
                 </div>
               </div>
@@ -534,7 +534,7 @@ const AdminLaptopCreatePage = () => {
                   type="text"
                   value={formData.processor}
                   onChange={(e) => setFormData({ ...formData, processor: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                 />
               </div>
 
@@ -545,7 +545,7 @@ const AdminLaptopCreatePage = () => {
                   type="text"
                   value={formData.ram}
                   onChange={(e) => setFormData({ ...formData, ram: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                 />
               </div>
 
@@ -556,7 +556,7 @@ const AdminLaptopCreatePage = () => {
                   type="text"
                   value={formData.storage}
                   onChange={(e) => setFormData({ ...formData, storage: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                 />
               </div>
 
@@ -567,7 +567,7 @@ const AdminLaptopCreatePage = () => {
                   type="text"
                   value={formData.gpu}
                   onChange={(e) => setFormData({ ...formData, gpu: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                 />
               </div>
 
@@ -578,7 +578,7 @@ const AdminLaptopCreatePage = () => {
                   type="text"
                   value={formData.screen_size}
                   onChange={(e) => setFormData({ ...formData, screen_size: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                 />
               </div>
 
@@ -589,7 +589,7 @@ const AdminLaptopCreatePage = () => {
                   type="text"
                   value={formData.warranty}
                   onChange={(e) => setFormData({ ...formData, warranty: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                 />
               </div>
 
@@ -600,7 +600,7 @@ const AdminLaptopCreatePage = () => {
                   type="text"
                   value={formData.operating_system}
                   onChange={(e) => setFormData({ ...formData, operating_system: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                 />
               </div>
 
@@ -611,7 +611,7 @@ const AdminLaptopCreatePage = () => {
                   type="text"
                   value={formData.panel_type}
                   onChange={(e) => setFormData({ ...formData, panel_type: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                 />
               </div>
 
@@ -622,7 +622,7 @@ const AdminLaptopCreatePage = () => {
                   type="text"
                   value={formData.color}
                   onChange={(e) => setFormData({ ...formData, color: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                 />
               </div>
 
@@ -633,7 +633,7 @@ const AdminLaptopCreatePage = () => {
                   type="text"
                   value={formData.weight}
                   onChange={(e) => setFormData({ ...formData, weight: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                 />
               </div>
 
@@ -644,7 +644,7 @@ const AdminLaptopCreatePage = () => {
                   type="text"
                   value={formData.release_year}
                   onChange={(e) => setFormData({ ...formData, release_year: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                 />
               </div>
 
@@ -685,8 +685,8 @@ const AdminLaptopCreatePage = () => {
                       setFormData({ ...formData, purchase_price: e.target.value });
                       if (errors.purchase_price) setErrors({ ...errors, purchase_price: null });
                     }}
-                    className={`w-full pl-12 pr-3 py-2.5 bg-slate-50 border text-slate-900 font-mono text-xs font-bold transition-colors focus:outline-none focus:bg-white ${
-                      errors.purchase_price ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200 focus:border-blue-600'
+                    className={`w-full pl-12 pr-3 py-2.5 bg-slate-50 border text-slate-900 font-mono text-xs font-bold transition-colors focus:outline-none ${
+                      errors.purchase_price ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200'
                     }`}
                   />
                 </div>
@@ -709,8 +709,8 @@ const AdminLaptopCreatePage = () => {
                       setFormData({ ...formData, selling_price: e.target.value });
                       if (errors.selling_price) setErrors({ ...errors, selling_price: null });
                     }}
-                    className={`w-full pl-12 pr-3 py-2.5 bg-blue-50/40 border text-blue-700 font-mono text-xs font-bold transition-colors focus:outline-none focus:bg-white ${
-                      errors.selling_price ? 'border-rose-400 bg-rose-50/30' : 'border-blue-200 focus:border-blue-600'
+                    className={`w-full pl-12 pr-3 py-2.5 bg-blue-50/40 border text-blue-700 font-mono text-xs font-bold transition-colors focus:outline-none ${
+                      errors.selling_price ? 'border-rose-400 bg-rose-50/30' : 'border-blue-200'
                     }`}
                   />
                 </div>
@@ -726,7 +726,7 @@ const AdminLaptopCreatePage = () => {
                   placeholder="0"
                   value={formData.display_stock}
                   onChange={(e) => setFormData({ ...formData, display_stock: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-mono text-xs transition-colors focus:outline-none focus:border-blue-600 focus:bg-white"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-mono text-xs transition-colors focus:outline-none"
                 />
               </div>
 
@@ -742,8 +742,8 @@ const AdminLaptopCreatePage = () => {
                     setFormData({ ...formData, physical_stock: e.target.value });
                     if (errors.physical_stock) setErrors({ ...errors, physical_stock: null });
                   }}
-                  className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 font-mono text-xs font-bold text-blue-600 transition-colors focus:outline-none focus:bg-white ${
-                    errors.physical_stock ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200 focus:border-blue-600'
+                  className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 font-mono text-xs font-bold transition-colors focus:outline-none ${
+                    errors.physical_stock ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200'
                   }`}
                 />
                 {errors.physical_stock && <p className="text-[10px] text-rose-500 mt-1 font-medium">{errors.physical_stock}</p>}
@@ -769,7 +769,7 @@ const AdminLaptopCreatePage = () => {
                 <select
                   value={formData.status}
                   onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-semibold transition-colors focus:outline-none focus:border-blue-600 focus:bg-white cursor-pointer"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-semibold transition-colors focus:outline-none cursor-pointer"
                 >
                   <option value="TERSEDIA">Tersedia</option>
                   <option value="HABIS">Habis</option>
@@ -789,7 +789,7 @@ const AdminLaptopCreatePage = () => {
                     setFormData({ ...formData, primary_image: e.target.value });
                     if (!previewImage) setPreviewImage(e.target.value);
                   }}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs transition-colors focus:outline-none focus:border-blue-600 focus:bg-white"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs transition-colors focus:outline-none"
                 />
               </div>
 
@@ -807,7 +807,7 @@ const AdminLaptopCreatePage = () => {
 
               {previewImage ? (
                 <div className="relative p-3 rounded-2xl bg-slate-50 border border-slate-200 flex items-center gap-3.5">
-                  <div className="w-16 h-16 rounded-xl bg-white border border-slate-200 overflow-hidden flex-shrink-0 flex items-center justify-center p-1">
+                  <div className="w-16 h-16 rounded-xl bg-white border border-slate-200 overflow-hidden shrink-0 flex items-center justify-center p-1">
                     <img src={previewImage} alt="Preview" className="w-full h-full object-contain" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -829,7 +829,7 @@ const AdminLaptopCreatePage = () => {
                   className="p-4 rounded-2xl border-2 border-dashed border-blue-200 hover:border-blue-500 bg-blue-50/30 hover:bg-blue-50/50 transition-all cursor-pointer flex items-center justify-between gap-3 group"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-blue-100/70 text-blue-600 flex items-center justify-center group-hover:scale-105 transition-transform flex-shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-blue-100/70 text-blue-600 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
                       <Upload className="w-5 h-5" />
                     </div>
                     <div>
@@ -870,7 +870,7 @@ const AdminLaptopCreatePage = () => {
                 maxLength="255"
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs transition-colors focus:outline-none focus:border-blue-600 focus:bg-white resize-none"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs transition-colors focus:outline-none resize-none"
               />
               <div className="text-right text-[10px] text-slate-400 font-mono">
                 {formData.description.length} / 255
@@ -889,7 +889,7 @@ const AdminLaptopCreatePage = () => {
               <button
                 type="submit"
                 disabled={submitting || !isFormValid}
-                className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-md shadow-blue-600/20 flex items-center gap-2 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed active:scale-98"
+                className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-md shadow-blue-600/20 flex items-center gap-2 transition-all cursor-pointer disabled:opacity-50 active:scale-98"
               >
                 <Save className="w-4 h-4" />
                 <span>{submitting ? 'Menyimpan...' : 'Simpan Laptop'}</span>

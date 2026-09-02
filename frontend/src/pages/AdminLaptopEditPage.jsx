@@ -348,7 +348,7 @@ const AdminLaptopEditPage = () => {
           <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
           <Link to="/admin/laptops" className="hover:text-blue-600 transition-colors">Data Laptop</Link>
           <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-          <Link to={`/admin/laptops/${id}`} className="hover:text-blue-600 transition-colors truncate max-w-[150px]">
+          <Link to={`/admin/laptops/${id}`} className="hover:text-blue-600 transition-colors truncate max-w-37.5">
             {formData.name || 'Detail Laptop'}
           </Link>
           <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
@@ -408,8 +408,8 @@ const AdminLaptopEditPage = () => {
                   required
                   value={formData.code}
                   onChange={(e) => handleInputChange('code', e.target.value)}
-                  className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 font-mono text-xs focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-100 transition-all ${
-                    errors.code ? 'border-rose-300 focus:border-rose-500' : 'border-slate-200 focus:border-blue-600'
+                  className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 font-mono text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all ${
+                    errors.code ? 'border-rose-300' : 'border-slate-200'
                   }`}
                 />
                 {errors.code && <span className="text-[11px] text-rose-500">{errors.code}</span>}
@@ -425,8 +425,8 @@ const AdminLaptopEditPage = () => {
                   required
                   value={formData.name}
                   onChange={(e) => handleInputChange('name', e.target.value)}
-                  className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 text-xs focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-100 transition-all ${
-                    errors.name ? 'border-rose-300 focus:border-rose-500' : 'border-slate-200 focus:border-blue-600'
+                  className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all ${
+                    errors.name ? 'border-rose-300' : 'border-slate-200'
                   }`}
                 />
                 {errors.name && <span className="text-[11px] text-rose-500">{errors.name}</span>}
@@ -441,8 +441,8 @@ const AdminLaptopEditPage = () => {
                   required
                   value={formData.brand_id}
                   onChange={(e) => handleInputChange('brand_id', e.target.value)}
-                  className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 text-xs focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-100 transition-all ${
-                    errors.brand_id ? 'border-rose-300 focus:border-rose-500' : 'border-slate-200 focus:border-blue-600'
+                  className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all ${
+                    errors.brand_id ? 'border-rose-300' : 'border-slate-200'
                   }`}
                 >
                   <option value="">Pilih Merek</option>
@@ -462,8 +462,8 @@ const AdminLaptopEditPage = () => {
                   required
                   value={formData.category_id}
                   onChange={(e) => handleInputChange('category_id', e.target.value)}
-                  className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 text-xs focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-100 transition-all ${
-                    errors.category_id ? 'border-rose-300 focus:border-rose-500' : 'border-slate-200 focus:border-blue-600'
+                  className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all ${
+                    errors.category_id ? 'border-rose-300' : 'border-slate-200'
                   }`}
                 >
                   <option value="">Pilih Kategori</option>
@@ -505,7 +505,7 @@ const AdminLaptopEditPage = () => {
                       handleInputChange('source_type', 'DEALER');
                     }
                   }}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
                 >
                   <option value="BARU">Laptop Baru</option>
                   <option value="SECOND">Laptop Second</option>
@@ -522,8 +522,8 @@ const AdminLaptopEditPage = () => {
                     required
                     value={formData.master_dealer_id}
                     onChange={(e) => handleInputChange('master_dealer_id', e.target.value)}
-                    className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 text-xs focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-100 transition-all ${
-                      errors.master_dealer_id ? 'border-rose-300 focus:border-rose-500' : 'border-slate-200 focus:border-blue-600'
+                    className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all ${
+                      errors.master_dealer_id ? 'border-rose-300' : 'border-slate-200'
                     }`}
                   >
                     <option value="">Pilih Master Dealer</option>
@@ -543,7 +543,7 @@ const AdminLaptopEditPage = () => {
                   <select
                     value={formData.dealer_id}
                     onChange={(e) => handleInputChange('dealer_id', e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
                   >
                     <option value="">Pilih Dealer Mitra</option>
                     {dealers.map(d => (
@@ -576,7 +576,7 @@ const AdminLaptopEditPage = () => {
                   type="text"
                   value={formData.processor}
                   onChange={(e) => handleInputChange('processor', e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
                 />
               </div>
 
@@ -587,7 +587,7 @@ const AdminLaptopEditPage = () => {
                   type="text"
                   value={formData.ram}
                   onChange={(e) => handleInputChange('ram', e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
                 />
               </div>
 
@@ -598,7 +598,7 @@ const AdminLaptopEditPage = () => {
                   type="text"
                   value={formData.storage}
                   onChange={(e) => handleInputChange('storage', e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
                 />
               </div>
 
@@ -609,7 +609,7 @@ const AdminLaptopEditPage = () => {
                   type="text"
                   value={formData.gpu}
                   onChange={(e) => handleInputChange('gpu', e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
                 />
               </div>
 
@@ -620,7 +620,7 @@ const AdminLaptopEditPage = () => {
                   type="text"
                   value={formData.screen_size}
                   onChange={(e) => handleInputChange('screen_size', e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
                 />
               </div>
 
@@ -631,7 +631,7 @@ const AdminLaptopEditPage = () => {
                   type="text"
                   value={formData.warranty}
                   onChange={(e) => handleInputChange('warranty', e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
                 />
               </div>
 
@@ -642,7 +642,7 @@ const AdminLaptopEditPage = () => {
                   type="text"
                   value={formData.operating_system}
                   onChange={(e) => handleInputChange('operating_system', e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
                 />
               </div>
 
@@ -653,7 +653,7 @@ const AdminLaptopEditPage = () => {
                   type="text"
                   value={formData.panel_type}
                   onChange={(e) => handleInputChange('panel_type', e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
                 />
               </div>
 
@@ -664,7 +664,7 @@ const AdminLaptopEditPage = () => {
                   type="text"
                   value={formData.color}
                   onChange={(e) => handleInputChange('color', e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
                 />
               </div>
 
@@ -675,7 +675,7 @@ const AdminLaptopEditPage = () => {
                   type="text"
                   value={formData.weight}
                   onChange={(e) => handleInputChange('weight', e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
                 />
               </div>
 
@@ -686,7 +686,7 @@ const AdminLaptopEditPage = () => {
                   type="number"
                   value={formData.release_year}
                   onChange={(e) => handleInputChange('release_year', e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
                 />
               </div>
 
@@ -722,8 +722,8 @@ const AdminLaptopEditPage = () => {
                     required
                     value={formData.purchase_price}
                     onChange={(e) => handleInputChange('purchase_price', e.target.value)}
-                    className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 font-mono text-xs focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-100 transition-all ${
-                      errors.purchase_price ? 'border-rose-300 focus:border-rose-500' : 'border-slate-200 focus:border-blue-600'
+                    className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 font-mono text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all ${
+                      errors.purchase_price ? 'border-rose-300' : 'border-slate-200'
                     }`}
                   />
                 </div>
@@ -742,8 +742,8 @@ const AdminLaptopEditPage = () => {
                     required
                     value={formData.selling_price}
                     onChange={(e) => handleInputChange('selling_price', e.target.value)}
-                    className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 font-mono font-bold text-xs focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-100 transition-all ${
-                      errors.selling_price ? 'border-rose-300 focus:border-rose-500' : 'border-slate-200 focus:border-blue-600'
+                    className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 font-mono font-bold text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all ${
+                      errors.selling_price ? 'border-rose-300' : 'border-slate-200'
                     }`}
                   />
                 </div>
@@ -758,7 +758,7 @@ const AdminLaptopEditPage = () => {
                   min="0"
                   value={formData.display_stock}
                   onChange={(e) => handleInputChange('display_stock', e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-mono text-xs focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-mono text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
                 />
               </div>
 
@@ -773,8 +773,8 @@ const AdminLaptopEditPage = () => {
                   min="0"
                   value={formData.physical_stock}
                   onChange={(e) => handleInputChange('physical_stock', e.target.value)}
-                  className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 font-mono text-xs focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-100 transition-all ${
-                    errors.physical_stock ? 'border-rose-300 focus:border-rose-500' : 'border-slate-200 focus:border-blue-600'
+                  className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 font-mono text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all ${
+                    errors.physical_stock ? 'border-rose-300' : 'border-slate-200'
                   }`}
                 />
                 {errors.physical_stock && <span className="text-[11px] text-rose-500">{errors.physical_stock}</span>}
@@ -799,7 +799,7 @@ const AdminLaptopEditPage = () => {
                 <select
                   value={formData.status}
                   onChange={(e) => handleInputChange('status', e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
                 >
                   <option value="TERSEDIA">Tersedia</option>
                   <option value="HABIS">Habis</option>
@@ -826,7 +826,7 @@ const AdminLaptopEditPage = () => {
                       setImageFileSize('');
                     }
                   }}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
                 />
               </div>
 
@@ -835,7 +835,7 @@ const AdminLaptopEditPage = () => {
             {/* Modern Upload Box Area */}
             <div className="p-4 rounded-xl bg-blue-50/40 border border-blue-100 flex items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-blue-100/70 text-blue-600 flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-blue-100/70 text-blue-600 flex items-center justify-center shrink-0">
                   <Upload className="w-5 h-5" />
                 </div>
                 <div>
@@ -866,7 +866,7 @@ const AdminLaptopEditPage = () => {
             {previewImage && (
               <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-3 animate-in fade-in duration-200">
                 <div className="flex items-center gap-3 min-w-0">
-                  <div className="w-12 h-10 rounded-lg overflow-hidden bg-slate-900 border border-slate-200 flex-shrink-0">
+                  <div className="w-12 h-10 rounded-lg overflow-hidden bg-slate-900 border border-slate-200 shrink-0">
                     <img
                       src={previewImage}
                       alt="Preview Laptop"
@@ -887,7 +887,7 @@ const AdminLaptopEditPage = () => {
                 <button
                   type="button"
                   onClick={handleRemoveImage}
-                  className="p-1.5 rounded-lg text-rose-500 hover:text-rose-700 hover:bg-rose-50 border border-transparent hover:border-rose-200 transition-colors cursor-pointer flex-shrink-0"
+                  className="p-1.5 rounded-lg text-rose-500 hover:text-rose-700 hover:bg-rose-50 border border-transparent hover:border-rose-200 transition-colors cursor-pointer shrink-0"
                   title="Hapus Foto"
                 >
                   <Trash2 className="w-4 h-4" />
@@ -913,7 +913,7 @@ const AdminLaptopEditPage = () => {
                 maxLength={255}
                 value={formData.description}
                 onChange={(e) => handleInputChange('description', e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all resize-none"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all resize-none"
               />
               <div className="text-right text-[11px] text-slate-400 font-mono">
                 {formData.description.length} / 255
@@ -932,7 +932,7 @@ const AdminLaptopEditPage = () => {
               <button
                 type="submit"
                 disabled={submitting || !isFormValid}
-                className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-md shadow-blue-600/20 flex items-center gap-2 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed active:scale-98"
+                className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-md shadow-blue-600/20 flex items-center gap-2 transition-all cursor-pointer disabled:opacity-50 active:scale-98"
               >
                 <Save className="w-4 h-4" />
                 <span>{submitting ? 'Menyimpan...' : 'Simpan Perubahan'}</span>

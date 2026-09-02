@@ -294,14 +294,14 @@ const AdminTransactionsPage = () => {
       {/* Feedback alerts */}
       {error && (
         <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700 flex items-center gap-2">
-          <AlertCircle className="w-4 h-4 flex-shrink-0" />
+          <AlertCircle className="w-4 h-4 shrink-0" />
           <span>{error}</span>
         </div>
       )}
 
       {success && (
         <div className="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-700 flex items-center gap-2">
-          <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
+          <CheckCircle2 className="w-4 h-4 shrink-0" />
           <span>{success}</span>
         </div>
       )}
@@ -358,7 +358,7 @@ const AdminTransactionsPage = () => {
                   <select
                     value={selectedMD}
                     onChange={(e) => setSelectedMD(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 focus:outline-none focus:border-blue-600"
+                    className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 focus:outline-none"
                   >
                     {masterDealers.map(md => (
                       <option key={md.id} value={md.id}>{md.code} - {md.name}</option>
@@ -373,7 +373,7 @@ const AdminTransactionsPage = () => {
                   <select
                     value={selectedDealer}
                     onChange={(e) => setSelectedDealer(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 focus:outline-none focus:border-blue-600"
+                    className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 focus:outline-none"
                   >
                     {dealers.map(d => (
                       <option key={d.id} value={d.id}>{d.code} - {d.name}</option>
@@ -391,7 +391,7 @@ const AdminTransactionsPage = () => {
                     placeholder="Contoh: Bpk. Gunawan"
                     value={inCustomerName}
                     onChange={(e) => setInCustomerName(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 focus:outline-none focus:border-blue-600"
+                    className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 focus:outline-none"
                   />
                 </div>
               )}
@@ -425,7 +425,7 @@ const AdminTransactionsPage = () => {
                         required
                         value={item.laptop_id}
                         onChange={(e) => handleItemChange(idx, 'laptop_id', e.target.value)}
-                        className="w-full px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:border-blue-600"
+                        className="w-full px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-900 font-semibold focus:outline-none"
                       >
                         <option value="">-- Pilih Laptop --</option>
                         {laptops.map(l => (
@@ -444,7 +444,7 @@ const AdminTransactionsPage = () => {
                         required
                         value={item.quantity}
                         onChange={(e) => handleItemChange(idx, 'quantity', e.target.value)}
-                        className="w-full px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-900 font-bold font-mono text-center focus:outline-none focus:border-blue-600"
+                        className="w-full px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-900 font-bold font-mono text-center focus:outline-none"
                       />
                     </div>
 
@@ -454,7 +454,7 @@ const AdminTransactionsPage = () => {
                         type="number"
                         value={item.unit_price}
                         onChange={(e) => handleItemChange(idx, 'unit_price', e.target.value)}
-                        className="w-full px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-900 font-mono focus:outline-none focus:border-blue-600"
+                        className="w-full px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-900 font-mono focus:outline-none"
                       />
                     </div>
 
@@ -498,7 +498,7 @@ const AdminTransactionsPage = () => {
                   placeholder="Catatan no resi, kondisi paket, atau keterangan lainnya..."
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-blue-600"
+                  className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none"
                 />
               </div>
 
@@ -554,7 +554,7 @@ const AdminTransactionsPage = () => {
                     placeholder="Contoh: Bpk. Hendra"
                     value={outCustomerName}
                     onChange={(e) => setOutCustomerName(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:border-blue-600"
+                    className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 font-semibold focus:outline-none"
                   />
                 </div>
 
@@ -565,7 +565,7 @@ const AdminTransactionsPage = () => {
                     placeholder="081234567890"
                     value={outCustomerContact}
                     onChange={(e) => setOutCustomerContact(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 font-mono focus:outline-none focus:border-blue-600"
+                    className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 font-mono focus:outline-none"
                   />
                 </div>
               </div>
@@ -600,7 +600,7 @@ const AdminTransactionsPage = () => {
                         required
                         value={item.laptop_id}
                         onChange={(e) => handleItemChange(idx, 'laptop_id', e.target.value)}
-                        className="w-full px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:border-blue-600"
+                        className="w-full px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-900 font-semibold focus:outline-none"
                       >
                         <option value="">-- Pilih Laptop --</option>
                         {laptops.map(l => (
@@ -634,7 +634,7 @@ const AdminTransactionsPage = () => {
                         type="number"
                         value={item.unit_price}
                         onChange={(e) => handleItemChange(idx, 'unit_price', e.target.value)}
-                        className="w-full px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-900 font-mono focus:outline-none focus:border-blue-600"
+                        className="w-full px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-900 font-mono focus:outline-none"
                       />
                     </div>
 
@@ -683,7 +683,7 @@ const AdminTransactionsPage = () => {
                   placeholder="Keterangan garansi, nota manual, atau kelengkapan..."
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-blue-600"
+                  className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none"
                 />
               </div>
 
@@ -727,7 +727,7 @@ const AdminTransactionsPage = () => {
                 placeholder="TRX-..."
                 value={historySearch}
                 onChange={(e) => setHistorySearch(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-blue-600"
+                className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none"
               />
             </div>
             <div>
@@ -735,7 +735,7 @@ const AdminTransactionsPage = () => {
               <select
                 value={historyType}
                 onChange={(e) => setHistoryType(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-blue-600"
+                className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none"
               >
                 <option value="">Semua Jenis</option>
                 <option value="MASUK">Barang Masuk</option>
@@ -748,7 +748,7 @@ const AdminTransactionsPage = () => {
                 type="date"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-blue-600"
+                className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none"
               />
             </div>
             <div>
@@ -757,7 +757,7 @@ const AdminTransactionsPage = () => {
                 type="date"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-blue-600"
+                className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none"
               />
             </div>
           </div>

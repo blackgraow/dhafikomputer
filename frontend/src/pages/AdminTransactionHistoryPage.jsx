@@ -193,7 +193,7 @@ const AdminTransactionHistoryPage = () => {
               placeholder="Cari no. transaksi / customer / dealer..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-9 pr-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all font-medium"
+              className="w-full pl-9 pr-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all font-medium"
             />
           </div>
 
@@ -236,14 +236,14 @@ const AdminTransactionHistoryPage = () => {
               type="date"
               value={startDate}
               onChange={(e) => { setStartDate(e.target.value); setPage(1); }}
-              className="w-full px-2.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 text-[11px] font-medium focus:outline-none focus:bg-white focus:border-blue-600 cursor-pointer"
+              className="w-full px-2.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 text-[11px] font-medium focus:outline-none cursor-pointer"
               title="Dari Tanggal"
             />
             <input
               type="date"
               value={endDate}
               onChange={(e) => { setEndDate(e.target.value); setPage(1); }}
-              className="w-full px-2.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 text-[11px] font-medium focus:outline-none focus:bg-white focus:border-blue-600 cursor-pointer"
+              className="w-full px-2.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 text-[11px] font-medium focus:outline-none cursor-pointer"
               title="Sampai Tanggal"
             />
           </div>
@@ -390,7 +390,7 @@ const AdminTransactionHistoryPage = () => {
                 type="button"
                 disabled={page <= 1}
                 onClick={() => setPage(p => Math.max(1, p - 1))}
-                className="px-3 py-1.5 rounded-xl border border-slate-200 hover:bg-slate-50 font-semibold disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-1 transition-colors cursor-pointer"
+                className="px-3 py-1.5 rounded-xl border border-slate-200 hover:bg-slate-50 font-semibold disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-1 transition-colors"
               >
                 <ChevronLeft className="w-4 h-4" />
                 <span>Sebelumnya</span>
@@ -399,7 +399,7 @@ const AdminTransactionHistoryPage = () => {
                 type="button"
                 disabled={page >= totalPages}
                 onClick={() => setPage(p => Math.min(totalPages, p + 1))}
-                className="px-3 py-1.5 rounded-xl border border-slate-200 hover:bg-slate-50 font-semibold disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-1 transition-colors cursor-pointer"
+                className="px-3 py-1.5 rounded-xl border border-slate-200 hover:bg-slate-50 font-semibold disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-1 transition-colors"
               >
                 <span>Berikutnya</span>
                 <ChevronRight className="w-4 h-4" />

@@ -307,7 +307,7 @@ const AdminReportsPage = () => {
                 <select
                   value={filterBrand}
                   onChange={(e) => setFilterBrand(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:outline-none focus:bg-white focus:border-blue-600"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:outline-none"
                 >
                   <option value="">Semua Merek</option>
                   {brands.map(b => <option key={b.id} value={b.id}>{b.name}</option>)}
@@ -319,7 +319,7 @@ const AdminReportsPage = () => {
                 <select
                   value={filterCategory}
                   onChange={(e) => setFilterCategory(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:outline-none focus:bg-white focus:border-blue-600"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:outline-none"
                 >
                   <option value="">Semua Kategori</option>
                   {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
@@ -331,7 +331,7 @@ const AdminReportsPage = () => {
                 <select
                   value={filterCondition}
                   onChange={(e) => setFilterCondition(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:outline-none focus:bg-white focus:border-blue-600"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:outline-none"
                 >
                   <option value="">Semua Kondisi</option>
                   <option value="BARU">Laptop Baru</option>
@@ -344,7 +344,7 @@ const AdminReportsPage = () => {
                 <select
                   value={filterStatus}
                   onChange={(e) => setFilterStatus(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:outline-none focus:bg-white focus:border-blue-600"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:outline-none"
                 >
                   <option value="">Semua Status</option>
                   <option value="TERSEDIA">Tersedia</option>
@@ -362,7 +362,7 @@ const AdminReportsPage = () => {
                   type="date"
                   value={startDate}
                   onChange={(e) => setStartDate(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:outline-none focus:bg-white focus:border-blue-600 cursor-pointer"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:outline-none cursor-pointer"
                 />
               </div>
 
@@ -372,7 +372,7 @@ const AdminReportsPage = () => {
                   type="date"
                   value={endDate}
                   onChange={(e) => setEndDate(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:outline-none focus:bg-white focus:border-blue-600 cursor-pointer"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:outline-none cursor-pointer"
                 />
               </div>
 
@@ -381,7 +381,7 @@ const AdminReportsPage = () => {
                 <select
                   value={filterBrand}
                   onChange={(e) => setFilterBrand(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:outline-none focus:bg-white focus:border-blue-600"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:outline-none"
                 >
                   <option value="">Semua Merek</option>
                   {brands.map(b => <option key={b.id} value={b.id}>{b.name}</option>)}
@@ -393,7 +393,7 @@ const AdminReportsPage = () => {
                 <select
                   value={filterCondition}
                   onChange={(e) => setFilterCondition(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:outline-none focus:bg-white focus:border-blue-600"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:outline-none"
                 >
                   <option value="">Semua Kondisi</option>
                   <option value="BARU">Laptop Baru</option>

@@ -403,7 +403,7 @@ const AdminLaptopsPage = () => {
             ? 'bg-rose-50 text-rose-800 border-rose-200'
             : 'bg-emerald-50 text-emerald-800 border-emerald-200'
         }`}>
-          {toast.type === 'error' ? <AlertCircle className="w-4 h-4 text-rose-600 flex-shrink-0" /> : <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />}
+          {toast.type === 'error' ? <AlertCircle className="w-4 h-4 text-rose-600 shrink-0" /> : <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />}
           <span>{toast.message}</span>
         </div>
       )}
@@ -430,7 +430,7 @@ const AdminLaptopsPage = () => {
             {/* + Tambah Laptop Button */}
             <button
               onClick={handleOpenCreateModal}
-              className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-98 text-white font-semibold text-xs shadow-md shadow-blue-600/25 hover:shadow-blue-600/40 transition-all flex items-center gap-2 cursor-pointer flex-shrink-0"
+              className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-98 text-white font-semibold text-xs shadow-md shadow-blue-600/25 hover:shadow-blue-600/40 transition-all flex items-center gap-2 cursor-pointer shrink-0"
             >
               <Plus className="w-4 h-4" />
               <span>Tambah Laptop</span>
@@ -456,7 +456,7 @@ const AdminLaptopsPage = () => {
               setSearch(e.target.value);
               setCurrentPage(1);
             }}
-            className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-900 text-xs placeholder:text-slate-400 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 shadow-xs transition-all"
+            className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-1 focus:ring-blue-600 shadow-xs transition-all"
           />
           {search && (
             <button
@@ -511,7 +511,7 @@ const AdminLaptopsPage = () => {
                   <select
                     value={filterBrand}
                     onChange={(e) => { setFilterBrand(e.target.value); setCurrentPage(1); }}
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 text-xs focus:outline-none focus:border-blue-600"
+                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 text-xs focus:outline-none"
                   >
                     <option value="">Semua Merek</option>
                     {brands.map(b => <option key={b.id} value={b.id}>{b.name}</option>)}
@@ -524,7 +524,7 @@ const AdminLaptopsPage = () => {
                   <select
                     value={filterCategory}
                     onChange={(e) => { setFilterCategory(e.target.value); setCurrentPage(1); }}
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 text-xs focus:outline-none focus:border-blue-600"
+                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 text-xs focus:outline-none"
                   >
                     <option value="">Semua Kategori</option>
                     {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
@@ -537,7 +537,7 @@ const AdminLaptopsPage = () => {
                   <select
                     value={filterCondition}
                     onChange={(e) => { setFilterCondition(e.target.value); setCurrentPage(1); }}
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 text-xs focus:outline-none focus:border-blue-600"
+                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 text-xs focus:outline-none"
                   >
                     <option value="">Semua</option>
                     <option value="BARU">Baru</option>
@@ -551,7 +551,7 @@ const AdminLaptopsPage = () => {
                   <select
                     value={filterStatus}
                     onChange={(e) => { setFilterStatus(e.target.value); setCurrentPage(1); }}
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 text-xs focus:outline-none focus:border-blue-600"
+                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 text-xs focus:outline-none"
                   >
                     <option value="">Semua</option>
                     <option value="TERSEDIA">Tersedia</option>
@@ -992,7 +992,7 @@ const AdminLaptopsPage = () => {
             <button
               onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
               disabled={pagination.current_page <= 1}
-              className="p-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
+              className="p-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               title="Halaman Sebelumnya"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -1015,7 +1015,7 @@ const AdminLaptopsPage = () => {
             <button
               onClick={() => setCurrentPage(prev => Math.min(prev + 1, pagination.total_pages))}
               disabled={pagination.current_page >= pagination.total_pages}
-              className="p-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
+              className="p-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               title="Halaman Berikutnya"
             >
               <ChevronRight className="w-4 h-4" />
@@ -1059,7 +1059,7 @@ const AdminLaptopsPage = () => {
                       placeholder="e.g. LPT-TEST-0043"
                       value={formData.code}
                       onChange={(e) => setFormData({ ...formData, code: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-mono font-bold focus:outline-none focus:border-blue-600 focus:bg-white"
+                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-mono font-bold focus:outline-none"
                     />
                   </div>
                   <div>
@@ -1070,7 +1070,7 @@ const AdminLaptopsPage = () => {
                       placeholder="e.g. ASUS Zenbook S 13 OLED"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                     />
                   </div>
                   <div>
@@ -1079,7 +1079,7 @@ const AdminLaptopsPage = () => {
                       required
                       value={formData.brand_id}
                       onChange={(e) => setFormData({ ...formData, brand_id: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                     >
                       <option value="">Pilih Merek</option>
                       {brands.map(b => <option key={b.id} value={b.id}>{b.name}</option>)}
@@ -1091,7 +1091,7 @@ const AdminLaptopsPage = () => {
                       required
                       value={formData.category_id}
                       onChange={(e) => setFormData({ ...formData, category_id: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                     >
                       <option value="">Pilih Kategori</option>
                       {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
@@ -1116,7 +1116,7 @@ const AdminLaptopsPage = () => {
                           source_type: cond === 'BARU' ? 'MASTER_DEALER' : 'DEALER'
                         });
                       }}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-semibold focus:outline-none focus:border-blue-600 focus:bg-white"
+                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-semibold focus:outline-none"
                     >
                       <option value="BARU">Laptop Baru</option>
                       <option value="SECOND">Laptop Second</option>
@@ -1130,7 +1130,7 @@ const AdminLaptopsPage = () => {
                         required
                         value={formData.master_dealer_id}
                         onChange={(e) => setFormData({ ...formData, master_dealer_id: e.target.value })}
-                        className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                        className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                       >
                         <option value="">Pilih Master Dealer (MD 1, MD 2, MD 3)</option>
                         {masterDealers.map(md => <option key={md.id} value={md.id}>{md.name} ({md.code})</option>)}
@@ -1142,7 +1142,7 @@ const AdminLaptopsPage = () => {
                       <select
                         value={formData.source_type}
                         onChange={(e) => setFormData({ ...formData, source_type: e.target.value })}
-                        className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                        className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                       >
                         <option value="DEALER">Dealer (Toko Lain)</option>
                         <option value="PEMILIK">Pemilik / Customer Langsung</option>
@@ -1158,7 +1158,7 @@ const AdminLaptopsPage = () => {
                       required
                       value={formData.dealer_id}
                       onChange={(e) => setFormData({ ...formData, dealer_id: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                     >
                       <option value="">Pilih Dealer Mitra</option>
                       {dealers.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
@@ -1313,7 +1313,7 @@ const AdminLaptopsPage = () => {
                       required
                       value={formData.physical_stock}
                       onChange={(e) => setFormData({ ...formData, physical_stock: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-mono font-bold text-blue-600"
+                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-mono font-bold"
                     />
                   </div>
                 </div>

@@ -315,7 +315,7 @@ const AdminLaptopDetailPage = () => {
             ? 'bg-rose-50 text-rose-800 border-rose-200'
             : 'bg-emerald-50 text-emerald-800 border-emerald-200'
         }`}>
-          {toast.type === 'error' ? <AlertCircle className="w-4 h-4 text-rose-600 flex-shrink-0" /> : <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />}
+          {toast.type === 'error' ? <AlertCircle className="w-4 h-4 text-rose-600 shrink-0" /> : <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />}
           <span>{toast.message}</span>
         </div>
       )}
@@ -377,7 +377,7 @@ const AdminLaptopDetailPage = () => {
           
           {/* Column Left: Laptop Thumbnail (~220-260px) */}
           <div className="lg:col-span-4 flex items-center justify-center">
-            <div className="relative w-full max-w-[260px] h-48 sm:h-52 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center p-4 overflow-hidden group">
+            <div className="relative w-full max-w-65 h-48 sm:h-52 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center p-4 overflow-hidden group">
               {laptop.primary_image ? (
                 <img
                   src={laptop.primary_image}
@@ -468,7 +468,7 @@ const AdminLaptopDetailPage = () => {
 
           {/* Column Right: "Informasi Stok & Harga" Card */}
           <div className="lg:col-span-3">
-            <div className="p-5 rounded-2xl bg-gradient-to-br from-blue-50/80 via-indigo-50/40 to-slate-50 border border-blue-100/90 shadow-xs space-y-4">
+            <div className="p-5 rounded-2xl bg-linear-to-br from-blue-50/80 via-indigo-50/40 to-slate-50 border border-blue-100/90 shadow-xs space-y-4">
               
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-slate-800">Informasi Stok & Harga</span>
@@ -931,7 +931,7 @@ const AdminLaptopDetailPage = () => {
                       required
                       value={formData.code}
                       onChange={(e) => setFormData({ ...formData, code: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-mono font-bold focus:outline-none focus:border-blue-600 focus:bg-white"
+                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-mono font-bold focus:outline-none"
                     />
                   </div>
                   <div>
@@ -941,7 +941,7 @@ const AdminLaptopDetailPage = () => {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                     />
                   </div>
                   <div>
@@ -950,7 +950,7 @@ const AdminLaptopDetailPage = () => {
                       required
                       value={formData.brand_id}
                       onChange={(e) => setFormData({ ...formData, brand_id: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                     >
                       <option value="">Pilih Merek</option>
                       {brands.map(b => <option key={b.id} value={b.id}>{b.name}</option>)}
@@ -962,7 +962,7 @@ const AdminLaptopDetailPage = () => {
                       required
                       value={formData.category_id}
                       onChange={(e) => setFormData({ ...formData, category_id: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                     >
                       <option value="">Pilih Kategori</option>
                       {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
@@ -987,7 +987,7 @@ const AdminLaptopDetailPage = () => {
                           source_type: cond === 'BARU' ? 'MASTER_DEALER' : 'DEALER'
                         });
                       }}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-semibold focus:outline-none focus:border-blue-600 focus:bg-white"
+                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-semibold focus:outline-none"
                     >
                       <option value="BARU">Laptop Baru</option>
                       <option value="SECOND">Laptop Second</option>
@@ -1001,7 +1001,7 @@ const AdminLaptopDetailPage = () => {
                         required
                         value={formData.master_dealer_id}
                         onChange={(e) => setFormData({ ...formData, master_dealer_id: e.target.value })}
-                        className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                        className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                       >
                         <option value="">Pilih Master Dealer</option>
                         {masterDealers.map(md => <option key={md.id} value={md.id}>{md.name} ({md.code})</option>)}
@@ -1013,7 +1013,7 @@ const AdminLaptopDetailPage = () => {
                       <select
                         value={formData.source_type}
                         onChange={(e) => setFormData({ ...formData, source_type: e.target.value })}
-                        className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
+                        className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
                       >
                         <option value="DEALER">Dealer (Toko Lain)</option>
                         <option value="PEMILIK">Pemilik / Customer Langsung</option>
@@ -1124,7 +1124,7 @@ const AdminLaptopDetailPage = () => {
                       required
                       value={formData.physical_stock}
                       onChange={(e) => setFormData({ ...formData, physical_stock: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-mono font-bold text-blue-600"
+                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-mono font-bold"
                     />
                   </div>
                 </div>

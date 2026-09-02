@@ -234,7 +234,7 @@ const AdminTransactionOutPage = () => {
         <div className={`fixed top-5 right-5 z-50 px-4 py-3 rounded-xl shadow-lg border text-xs font-semibold flex items-center gap-2.5 animate-in slide-in-from-top-2 duration-200 ${
           toast.type === 'success' ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : 'bg-red-50 text-red-800 border-red-200'
         }`}>
-          {toast.type === 'success' ? <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" /> : <AlertCircle className="w-4 h-4 text-red-600 flex-shrink-0" />}
+          {toast.type === 'success' ? <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" /> : <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />}
           <span>{toast.message}</span>
         </div>
       )}
@@ -325,7 +325,7 @@ const AdminTransactionOutPage = () => {
                     required
                     value={transactionDate}
                     onChange={(e) => setTransactionDate(e.target.value)}
-                    className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all cursor-pointer"
+                    className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all cursor-pointer"
                   />
                 </div>
               </div>
@@ -336,7 +336,7 @@ const AdminTransactionOutPage = () => {
                   type="text"
                   value={referenceDoc}
                   onChange={(e) => setReferenceDoc(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all font-mono"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all font-mono"
                 />
               </div>
             </div>
@@ -417,7 +417,7 @@ const AdminTransactionOutPage = () => {
                       required
                       value={customerName}
                       onChange={(e) => setCustomerName(e.target.value)}
-                      className="w-full px-3 py-2 rounded-xl bg-white border border-slate-200 text-slate-900 focus:outline-none focus:border-blue-600"
+                      className="w-full px-3 py-2 rounded-xl bg-white border border-slate-200 text-slate-900 focus:outline-none"
                     />
                   </div>
                   <div className="space-y-1">
@@ -426,7 +426,7 @@ const AdminTransactionOutPage = () => {
                       type="text"
                       value={customerPhone}
                       onChange={(e) => setCustomerPhone(e.target.value)}
-                      className="w-full px-3 py-2 rounded-xl bg-white border border-slate-200 text-slate-900 font-mono focus:outline-none focus:border-blue-600"
+                      className="w-full px-3 py-2 rounded-xl bg-white border border-slate-200 text-slate-900 font-mono focus:outline-none"
                     />
                   </div>Alamat Pengiriman / Domisili
                 </div>
@@ -436,7 +436,7 @@ const AdminTransactionOutPage = () => {
                     type="text"
                     value={customerAddress}
                     onChange={(e) => setCustomerAddress(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl bg-white border border-slate-200 text-slate-900 focus:outline-none focus:border-blue-600"
+                    className="w-full px-3 py-2 rounded-xl bg-white border border-slate-200 text-slate-900 focus:outline-none"
                   />
                 </div>
               </div>
@@ -454,7 +454,7 @@ const AdminTransactionOutPage = () => {
                   required
                   value={selectedDealerId}
                   onChange={(e) => setSelectedDealerId(e.target.value)}
-                  className="w-full px-3 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition-all cursor-pointer"
+                  className="w-full px-3 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-100 transition-all cursor-pointer"
                 >
                   {dealers.map(d => (
                     <option key={d.id} value={d.id}>
@@ -471,7 +471,7 @@ const AdminTransactionOutPage = () => {
                 <select
                   value={internalPurpose}
                   onChange={(e) => setInternalPurpose(e.target.value)}
-                  className="w-full px-3 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:border-amber-600 focus:ring-2 focus:ring-amber-100 transition-all cursor-pointer"
+                  className="w-full px-3 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-100 transition-all cursor-pointer"
                 >
                   <option value="Unit Demo Display Toko">Unit Demo Display Toko</option>
                   <option value="Penggantian Garansi Unit Rusak (RMA)">Penggantian Garansi Unit Rusak (RMA)</option>
@@ -555,7 +555,7 @@ const AdminTransactionOutPage = () => {
                           required
                           value={item.laptop_id}
                           onChange={(e) => handleItemChange(idx, 'laptop_id', e.target.value)}
-                          className="w-full px-3 py-2 rounded-xl bg-white border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all cursor-pointer"
+                          className="w-full px-3 py-2 rounded-xl bg-white border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all cursor-pointer"
                         >
                           <option value="">-- Pilih Laptop Tersedia --</option>
                           {laptops.map(lap => {
@@ -580,8 +580,8 @@ const AdminTransactionOutPage = () => {
                           onChange={(e) => handleItemChange(idx, 'quantity', e.target.value)}
                           className={`w-full px-2.5 py-2 rounded-xl bg-white border text-slate-900 font-bold font-mono text-center focus:outline-none focus:ring-2 transition-all ${
                             isOverStock
-                              ? 'border-rose-400 focus:border-rose-600 focus:ring-rose-100 text-rose-700'
-                              : 'border-slate-200 focus:border-blue-600 focus:ring-blue-100'
+                              ? 'border-rose-400 focus:ring-rose-100 text-rose-700'
+                              : 'border-slate-200 focus:ring-blue-100'
                           }`}
                         />
                       </div>
@@ -595,7 +595,7 @@ const AdminTransactionOutPage = () => {
                           required
                           value={item.unit_price}
                           onChange={(e) => handleItemChange(idx, 'unit_price', e.target.value)}
-                          className="w-full px-3 py-2 rounded-xl bg-white border border-slate-200 text-slate-900 font-mono font-bold focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all"
+                          className="w-full px-3 py-2 rounded-xl bg-white border border-slate-200 text-slate-900 font-mono font-bold focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
                         />
                       </div>
 
@@ -606,7 +606,7 @@ const AdminTransactionOutPage = () => {
                       <div className="pt-2 border-t border-slate-200/60 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px]">
                         {isOverStock ? (
                           <div className="flex items-center gap-1.5 text-rose-700 font-semibold">
-                            <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+                            <AlertTriangle className="w-4 h-4 shrink-0" />
                             <span>Stok fisik tidak mencukupi! Hanya tersedia {currentPhysical} unit di gudang.</span>
                           </div>
                         ) : (
@@ -642,7 +642,7 @@ const AdminTransactionOutPage = () => {
               maxLength={255}
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all resize-none"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all resize-none"
             />
           </div>
 
@@ -662,7 +662,7 @@ const AdminTransactionOutPage = () => {
             <button
               type="submit"
               disabled={submitting || !isFormValid}
-              className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-md shadow-blue-600/20 flex items-center gap-2 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed active:scale-98"
+              className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-md shadow-blue-600/20 flex items-center gap-2 transition-all cursor-pointer disabled:opacity-50 active:scale-98"
             >
               {submitting ? (
                 <>
@@ -737,7 +737,7 @@ const AdminTransactionOutPage = () => {
                               {qty} unit × {formatRupiah(price)}
                             </span>
                           </div>
-                          <span className="font-mono font-bold text-slate-100 flex-shrink-0">
+                          <span className="font-mono font-bold text-slate-100 shrink-0">
                             {formatRupiah(qty * price)}
                           </span>
                         </div>
