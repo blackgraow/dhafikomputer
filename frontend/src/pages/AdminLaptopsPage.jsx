@@ -705,42 +705,14 @@ const AdminLaptopsPage = () => {
                     </tr>
                   ))
                 ) : laptops.length === 0 ? (
-                  /* EMPTY STATES */
+                  /* EMPTY STATE - MATCHING MASTER MEREK STYLE */
                   <tr>
-                    <td colSpan="11" className="py-16 text-center">
-                      {isSearchActive || isFilterActive ? (
-                        <div className="space-y-3">
-                          <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mx-auto">
-                            <Search className="w-6 h-6" />
-                          </div>
-                          <h3 className="text-base font-bold text-slate-800">Tidak Ditemukan</h3>
-                          <p className="text-xs text-slate-500 max-w-sm mx-auto">
-                            Coba gunakan kode atau nama laptop yang berbeda.
-                          </p>
-                          <button
-                            onClick={handleResetFilters}
-                            className="px-4 py-2 rounded-xl bg-blue-50 text-blue-600 font-semibold text-xs hover:bg-blue-100 transition-colors cursor-pointer"
-                          >
-                            Reset Pencarian
-                          </button>
-                        </div>
-                      ) : (
-                        <div className="space-y-3">
-                          <div className="w-12 h-12 rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center mx-auto">
-                            <LaptopIcon className="w-6 h-6" />
-                          </div>
-                          <h3 className="text-base font-bold text-slate-800">Belum Ada Data Laptop</h3>
-                          <p className="text-xs text-slate-500 max-w-sm mx-auto">
-                            Belum ada laptop yang terdaftar dalam sistem.
-                          </p>
-                          <button
-                            onClick={handleOpenCreateModal}
-                            className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs shadow-sm transition-colors cursor-pointer"
-                          >
-                            + Tambah Laptop
-                          </button>
-                        </div>
-                      )}
+                    <td colSpan="11" className="py-12 text-center text-slate-400">
+                      <div className="flex flex-col items-center justify-center gap-2">
+                        <LaptopIcon className="w-8 h-8 text-slate-300 stroke-1" />
+                        <p className="font-medium text-slate-600">Tidak ada data ditemukan</p>
+                        <p className="text-[11px] text-slate-400">Coba ubah kata kunci pencarian atau filter yang dipilih.</p>
+                      </div>
                     </td>
                   </tr>
                 ) : (
@@ -901,8 +873,12 @@ const AdminLaptopsPage = () => {
                 </div>
               ))
             ) : laptops.length === 0 ? (
-              <div className="col-span-full py-12 text-center text-slate-500 text-xs">
-                Tidak ada data laptop yang tersedia.
+              <div className="col-span-full py-12 text-center text-slate-400">
+                <div className="flex flex-col items-center justify-center gap-2">
+                  <LaptopIcon className="w-8 h-8 text-slate-300 stroke-1" />
+                  <p className="font-medium text-slate-600">Tidak ada data ditemukan</p>
+                  <p className="text-[11px] text-slate-400">Coba ubah kata kunci pencarian atau filter yang dipilih.</p>
+                </div>
               </div>
             ) : (
               laptops.map(row => (
@@ -983,9 +959,9 @@ const AdminLaptopsPage = () => {
           <div>
             Menampilkan <strong className="text-slate-900 font-mono">
               {laptops.length === 0 ? 0 : (pagination.current_page - 1) * (pagination.limit || 10) + 1}
-            </strong>–<strong className="text-slate-900 font-mono">
-              {Math.min(pagination.current_page * (pagination.limit || 10), pagination.total_items ?? laptops.length)}
-            </strong> dari <strong className="text-slate-900 font-mono">{pagination.total_items ?? laptops.length}</strong> laptop
+            </strong> sampai <strong className="text-slate-900 font-mono">
+              {laptops.length === 0 ? 0 : Math.min(pagination.current_page * (pagination.limit || 10), pagination.total_items ?? laptops.length)}
+            </strong> dari <strong className="text-slate-900 font-mono">{pagination.total_items ?? laptops.length}</strong> data
           </div>
 
           <div className="flex items-center gap-1.5 self-center sm:self-auto">

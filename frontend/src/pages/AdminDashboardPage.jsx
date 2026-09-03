@@ -124,20 +124,9 @@ const AdminDashboardPage = () => {
   const displayTransactions = (latest_transactions || []).slice(0, 5);
 
   // Total physical stock across all brands for percentage calculation
-  const totalAllStock = brand_summary.reduce((acc, b) => acc + (b.total_physical_stock || 0), 0) || 1;
+  const totalAllStock = brand_summary.reduce((acc, b) => acc + (b.total_physical_stock || 0), 0);
 
-  // Fallback brand list if empty
-  const defaultBrands = [
-    { brand_id: 1, brand_name: 'ASUS', total_laptop_types: 6, total_physical_stock: 21 },
-    { brand_id: 2, brand_name: 'Acer', total_laptop_types: 1, total_physical_stock: 0 },
-    { brand_id: 3, brand_name: 'Apple', total_laptop_types: 1, total_physical_stock: 0 },
-    { brand_id: 4, brand_name: 'Dell', total_laptop_types: 1, total_physical_stock: 0 },
-    { brand_id: 5, brand_name: 'HP', total_laptop_types: 1, total_physical_stock: 0 },
-    { brand_id: 6, brand_name: 'Lenovo', total_laptop_types: 1, total_physical_stock: 0 },
-    { brand_id: 7, brand_name: 'MSI', total_laptop_types: 1, total_physical_stock: 0 }
-  ];
-
-  const effectiveBrandList = brand_summary.length > 0 ? brand_summary : defaultBrands;
+  const effectiveBrandList = brand_summary || [];
 
   return (
     <div className="space-y-6">
@@ -171,23 +160,11 @@ const AdminDashboardPage = () => {
           <div>
             <div className="flex items-baseline gap-1.5">
               <span className="text-3xl font-extrabold text-slate-900 font-mono tracking-tight">
-                {cards.total_laptop || 6}
+                {cards.total_laptop ?? 0}
               </span>
               <span className="text-xs font-medium text-slate-500">Unit</span>
             </div>
             <span className="text-xs text-slate-400 mt-0.5 block">Seluruh laptop terdaftar</span>
-          </div>
-
-          {/* Mini Wave Sparkline & Trend */}
-          <div className="pt-1 space-y-2">
-            <svg className="w-full h-7 text-blue-500" viewBox="0 0 100 24" fill="none">
-              <path
-                d="M0 18 Q 15 22, 30 14 T 60 8 T 85 16 T 100 6"
-                stroke="currentColor"
-                strokeWidth="2"
-                fill="none"
-              />
-            </svg>
           </div>
         </div>
 
@@ -202,23 +179,11 @@ const AdminDashboardPage = () => {
           <div>
             <div className="flex items-baseline gap-1.5">
               <span className="text-3xl font-extrabold text-emerald-600 font-mono tracking-tight">
-                {cards.laptop_baru || 6}
+                {cards.laptop_baru ?? 0}
               </span>
               <span className="text-xs font-medium text-slate-500">Unit</span>
             </div>
             <span className="text-xs text-slate-400 mt-0.5 block">Laptop baru</span>
-          </div>
-
-          {/* Mini Wave Sparkline & Trend */}
-          <div className="pt-1 space-y-2">
-            <svg className="w-full h-7 text-emerald-500" viewBox="0 0 100 24" fill="none">
-              <path
-                d="M0 20 Q 20 18, 40 22 T 70 8 T 85 14 T 100 12"
-                stroke="currentColor"
-                strokeWidth="2"
-                fill="none"
-              />
-            </svg>
           </div>
         </div>
 
@@ -239,18 +204,6 @@ const AdminDashboardPage = () => {
             </div>
             <span className="text-xs text-slate-400 mt-0.5 block">Laptop second</span>
           </div>
-
-          {/* Flat Sparkline & Trend */}
-          <div className="pt-1 space-y-2">
-            <svg className="w-full h-7 text-amber-500" viewBox="0 0 100 24" fill="none">
-              <path
-                d="M0 16 L 100 16"
-                stroke="currentColor"
-                strokeWidth="2"
-                fill="none"
-              />
-            </svg>
-          </div>
         </div>
 
         {/* CARD 4: Estimasi Nilai Stok Fisik Inventaris */}
@@ -263,23 +216,11 @@ const AdminDashboardPage = () => {
           </div>
           <div>
             <span className="text-2xl font-extrabold text-slate-900 block truncate font-mono tracking-tight">
-              {cards.estimasi_nilai_stok ? formatRupiah(cards.estimasi_nilai_stok) : 'Rp 407.983.000'}
+              {formatRupiah(cards.estimasi_nilai_stok ?? 0)}
             </span>
             <span className="text-[11px] text-slate-400 mt-0.5 block leading-tight">
               Total taksiran nilai aset berdasarkan harga jual terakhir.
             </span>
-          </div>
-
-          {/* Mini Wave Sparkline & Trend */}
-          <div className="pt-1 space-y-2">
-            <svg className="w-full h-7 text-indigo-500" viewBox="0 0 100 24" fill="none">
-              <path
-                d="M0 18 Q 20 22, 40 16 T 70 14 T 88 8 T 100 12"
-                stroke="currentColor"
-                strokeWidth="2"
-                fill="none"
-              />
-            </svg>
           </div>
         </div>
 
@@ -308,41 +249,47 @@ const AdminDashboardPage = () => {
           </div>
 
           <div className="space-y-4">
-            {effectiveBrandList.map((b) => {
-              // Calculate brand share
-              const stock = b.total_physical_stock || 0;
-              const percent = totalAllStock > 0 ? Math.round((stock / totalAllStock) * 100) : 0;
-              const hasStock = stock > 0;
+            {effectiveBrandList.length === 0 ? (
+              <div className="py-8 text-center text-slate-400 text-xs">
+                Belum ada data merek terdaftar.
+              </div>
+            ) : (
+              effectiveBrandList.map((b) => {
+                // Calculate brand share
+                const stock = b.total_physical_stock || 0;
+                const percent = totalAllStock > 0 ? Math.round((stock / totalAllStock) * 100) : 0;
+                const hasStock = stock > 0;
 
-              return (
-                <div key={b.brand_id || b.brand_name} className="space-y-2">
-                  <div className="flex items-center justify-between text-xs">
-                    <div className="flex items-center gap-2">
-                      <span className="font-bold text-slate-900 text-xs">{b.brand_name}</span>
-                      <span className="text-[11px] text-slate-400 font-medium">({b.total_laptop_types || 1} model)</span>
+                return (
+                  <div key={b.brand_id || b.brand_name} className="space-y-2">
+                    <div className="flex items-center justify-between text-xs">
+                      <div className="flex items-center gap-2">
+                        <span className="font-bold text-slate-900 text-xs">{b.brand_name}</span>
+                        <span className="text-[11px] text-slate-400 font-medium">({b.total_laptop_types || 0} model)</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <span className={`font-mono font-bold text-xs ${hasStock ? 'text-blue-600' : 'text-slate-500'}`}>
+                          {stock} <span className="font-normal text-slate-400 text-[10px]">Unit</span>
+                        </span>
+                        <span className="text-[11px] font-mono text-slate-400 w-7 text-right">
+                          {percent}%
+                        </span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <span className={`font-mono font-bold text-xs ${hasStock ? 'text-blue-600' : 'text-slate-500'}`}>
-                        {stock} <span className="font-normal text-slate-400 text-[10px]">Unit</span>
-                      </span>
-                      <span className="text-[11px] font-mono text-slate-400 w-7 text-right">
-                        {hasStock ? `${percent || 52}%` : '0%'}
-                      </span>
+
+                    {/* Progress Bar */}
+                    <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                      <div
+                        className={`h-full rounded-full transition-all duration-500 ${
+                          hasStock ? 'bg-blue-600' : 'bg-slate-200 w-1.5'
+                        }`}
+                        style={{ width: hasStock ? `${Math.max(percent, 4)}%` : '4px' }}
+                      />
                     </div>
                   </div>
-
-                  {/* Progress Bar */}
-                  <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                    <div
-                      className={`h-full rounded-full transition-all duration-500 ${
-                        hasStock ? 'bg-blue-600' : 'bg-slate-200 w-1.5'
-                      }`}
-                      style={{ width: hasStock ? `${Math.max(percent || 52, 6)}%` : '4px' }}
-                    />
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })
+            )}
           </div>
 
           {/* Bottom Card Link */}
