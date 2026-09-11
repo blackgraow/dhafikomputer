@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import api from '../services/api';
+import api, { getImageUrl } from '../services/api';
 import {
   ChevronRight,
   Monitor,
@@ -51,10 +52,13 @@ const PublicProductDetailPage = () => {
   };
 
   const imagesList = product?.images && product.images.length > 0
+  const rawImages = product?.images && product.images.length > 0
     ? product.images
     : [product?.primary_image].filter(Boolean);
 
   const currentImage = imagesList[activeImageIndex] || product?.primary_image;
+  const imagesList = rawImages.map(img => getImageUrl(img));
+  const currentImage = imagesList[activeImageIndex] || getImageUrl(product?.primary_image);
 
   const handleWhatsApp = () => {
     if (!product) return;

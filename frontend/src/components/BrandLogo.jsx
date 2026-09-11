@@ -1,4 +1,5 @@
 import React from 'react';
+import { getImageUrl } from '../services/api';
 
 /**
  * Universal BrandLogo component for Dhafi Komputer Inventory System.
@@ -8,7 +9,7 @@ import React from 'react';
  */
 export const BrandLogo = ({ name, code, logoUrl, className = '', size = 'md' }) => {
   const brandLower = (name || '').toLowerCase().trim();
-  const url = logoUrl;
+  const url = getImageUrl(logoUrl);
 
   // Size mapping
   const sizeClasses = {

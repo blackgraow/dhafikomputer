@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { getImageUrl } from '../services/api';
 import {
   X,
   CheckCircle2,
@@ -28,10 +29,13 @@ const ProductDetailModal = ({ product, onClose }) => {
   };
 
   const imagesList = product.images && product.images.length > 0
+  const rawImages = product.images && product.images.length > 0
     ? product.images
     : [product.primary_image].filter(Boolean);
 
   const currentImage = imagesList[activeImageIndex] || product.primary_image;
+  const imagesList = rawImages.map(img => getImageUrl(img));
+  const currentImage = imagesList[activeImageIndex] || getImageUrl(product.primary_image);
 
   const handleWhatsApp = () => {
     const text = `Halo Dhafi Komputer, saya tertarik dengan unit laptop:\n\n*${product.name}*\nKode: ${product.code}\nKondisi: Laptop ${product.condition_type}\nHarga: ${formatRupiah(product.selling_price)}\n\nApakah unit ini masih tersedia di toko?`;

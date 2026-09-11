@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ProductDetailModal from '../components/ProductDetailModal';
 import api from '../services/api';
+import api, { getImageUrl } from '../services/api';
 import {
   Laptop,
   Search,
@@ -103,6 +104,8 @@ const PublicCatalogPage = () => {
   const getLaptopImage = (laptop) => {
     if (laptop.primary_image && laptop.primary_image.startsWith('http')) {
       return laptop.primary_image;
+    if (laptop.primary_image) {
+      return getImageUrl(laptop.primary_image);
     }
     const brand = (laptop.brand_name || '').toLowerCase();
     const category = (laptop.category_name || '').toLowerCase();
