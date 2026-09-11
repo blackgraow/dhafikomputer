@@ -57,14 +57,6 @@ const AdminLaptopsPage = () => {
   const [loading, setLoading] = useState(true);
   const [pagination, setPagination] = useState({ current_page: 1, total_pages: 1, total_items: 0, limit: 10 });
 
-  // Summary Statistics State
-  const [summaryStats, setSummaryStats] = useState({
-    total_laptop: 6,
-    laptop_baru: 6,
-    laptop_second: 0,
-    estimasi_nilai_stok: 407983000
-  });
-
   // Filter & Search & Sort State
   const [search, setSearch] = useState('');
   const [filterBrand, setFilterBrand] = useState('');
@@ -83,9 +75,6 @@ const AdminLaptopsPage = () => {
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingLaptop, setEditingLaptop] = useState(null);
-  const [viewingLaptop, setViewingLaptop] = useState(null);
-  const [loadingDetail, setLoadingDetail] = useState(false);
-  const [detailTab, setDetailTab] = useState('SPECS'); // 'SPECS', 'FINANCE', 'HISTORY'
   const [deleteConfirmLaptop, setDeleteConfirmLaptop] = useState(null);
   const [submitting, setSubmitting] = useState(false);
 

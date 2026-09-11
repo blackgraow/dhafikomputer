@@ -429,34 +429,34 @@ const AdminLaptopDetailPage = () => {
             </div>
 
             {/* 4 Info Chips (Merek, Kategori, Jenis, Sumber) */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 border-t border-slate-100 text-xs">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-3 border-t border-slate-100 text-xs">
               
               {/* Merek */}
-              <div className="space-y-1">
+              <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100/80">
                 <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Merek</span>
-                <span className="font-bold text-slate-800 block truncate">{laptop.brand_name || '-'}</span>
+                <span className="font-bold text-slate-900 block truncate mt-0.5" title={laptop.brand_name || '-'}>{laptop.brand_name || '-'}</span>
               </div>
 
               {/* Kategori */}
-              <div className="space-y-1">
+              <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100/80">
                 <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Kategori</span>
-                <span className="font-semibold text-slate-800 block truncate">{laptop.category_name}</span>
+                <span className="font-semibold text-slate-800 block truncate mt-0.5" title={laptop.category_name || '-'}>{laptop.category_name || '-'}</span>
               </div>
 
               {/* Jenis */}
-              <div className="space-y-1">
+              <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100/80">
                 <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Jenis</span>
-                <span className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                  laptop.condition_type === 'BARU' ? 'bg-blue-50 text-blue-600 border border-blue-200/80' : 'bg-amber-50 text-amber-700 border border-amber-200/80'
+                <span className={`inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold mt-0.5 ${
+                  laptop.condition_type === 'BARU' ? 'bg-blue-50 text-blue-700 border border-blue-200/60' : 'bg-amber-50 text-amber-700 border border-amber-200/60'
                 }`}>
                   {laptop.condition_type}
                 </span>
               </div>
 
               {/* Sumber */}
-              <div className="space-y-1">
+              <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100/80">
                 <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Sumber</span>
-                <span className="font-semibold text-slate-800 block truncate text-[11px]">
+                <span className="font-semibold text-slate-800 block truncate text-xs mt-0.5" title={laptop.condition_type === 'BARU' ? (laptop.master_dealer_name || 'MD 1') : (laptop.dealer_name || laptop.customer_name || 'Dealer/Customer')}>
                   {laptop.condition_type === 'BARU' 
                     ? (laptop.master_dealer_name || 'MD 1') 
                     : (laptop.dealer_name || laptop.customer_name || 'Dealer/Customer')}

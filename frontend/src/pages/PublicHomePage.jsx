@@ -316,15 +316,13 @@ const PublicHomePage = () => {
               <div className="absolute inset-0 bg-[radial-gradient(#2563eb_1px,transparent_1px)] bg-size-[16px_16px] opacity-15 pointer-events-none rounded-2xl" />
 
               {/* Main Laptop Showcase Card */}
-            <div className="lg:col-span-6">
-              <div className="relative rounded-2xl overflow-hidden border border-slate-200 bg-white p-3 shadow-card group">
+              <div className="relative w-full rounded-2xl overflow-hidden border border-slate-200 bg-white p-3 shadow-card group">
                 <img
                   src={heroBannerImg}
                   alt="Toko Dhafi Komputer Modern Store"
                   className="w-full h-72 sm:h-96 object-cover rounded-xl group-hover:scale-102 transition-transform duration-300"
                 />
               </div>
-            </div>
 
             </div>
 
