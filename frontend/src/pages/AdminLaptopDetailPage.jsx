@@ -33,7 +33,8 @@ import {
   Shield,
   Palette,
   Scale,
-  Maximize2
+  Maximize2,
+  History
 } from 'lucide-react';
 
 const AdminLaptopDetailPage = () => {
