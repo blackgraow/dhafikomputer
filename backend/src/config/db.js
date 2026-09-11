@@ -81,24 +81,15 @@ const mockDb = {
     { id: 4, code: 'CTG-ULT', name: 'Ultrabook & Tipis', description: 'Laptop ringan, tipis, premium dengan daya tahan baterai panjang' }
   ],
   master_dealers: [
-    { id: 1, code: 'MD-001', name: 'MD 1 (Master Dealer BEC Utama)', contact: '081234567890', address: 'BEC Lantai 1 Blok A-01, Jl. Purnawarman No. 13-15, Bandung', status: 'AKTIF', notes: 'Supplier Resmi Laptop Baru All Brand di BEC' },
-    { id: 2, code: 'MD-002', name: 'MD 2 (Master Dealer BEC Megastore)', contact: '081298765432', address: 'BEC Lantai 2 Blok F-08, Jl. Purnawarman No. 13-15, Bandung', status: 'AKTIF', notes: 'Supplier Laptop Baru All Brand di BEC' },
-    { id: 3, code: 'MD-003', name: 'MD 3 (Master Dealer BEC Partner)', contact: '081311223344', address: 'BEC Gedung Baru Lantai 1 No. 12, Bandung', status: 'AKTIF', notes: 'Supplier Laptop Baru All Brand di BEC' }
     { id: 1, code: 'MD-001', name: 'MD 1 (Master Dealer Utama)', contact: '081234567890', address: 'Jalan Master Supplier No. 1, Jakarta', status: 'AKTIF', notes: 'Supplier Laptop Baru All Brand' },
     { id: 2, code: 'MD-002', name: 'MD 2 (Master Dealer Partner)', contact: '081298765432', address: 'Jalan Master Supplier No. 2, Bandung', status: 'AKTIF', notes: 'Supplier Laptop Baru All Brand' },
     { id: 3, code: 'MD-003', name: 'MD 3 (Master Dealer Regional)', contact: '081311223344', address: 'Jalan Master Supplier No. 3, Surabaya', status: 'AKTIF', notes: 'Supplier Laptop Baru All Brand' }
   ],
   dealers: [
-    { id: 1, code: 'DLR-001', name: 'Toko Laptop Bandung Computer', contact: '085712341234', address: 'BEC Lantai 2 Blok C-15, Bandung', status: 'AKTIF', notes: 'Toko Partner Laptop Second BEC' },
-    { id: 2, code: 'DLR-002', name: 'Sentra Laptop BEC', contact: '085899887766', address: 'BEC Lantai 1 Blok D-05, Bandung', status: 'AKTIF', notes: 'Toko Partner Laptop Second & Tukar Tambah BEC' },
-    { id: 3, code: 'DLR-003', name: 'Bintang Notebook BEC', contact: '081900112233', address: 'BEC Lantai 2 Blok B-10, Bandung', status: 'AKTIF', notes: 'Toko Partner Laptop Second BEC' }
     { id: 1, code: 'DLR-001', name: 'Toko Laptop Bandung Computer', contact: '085712341234', address: 'BEC Lt. 2 Bandung', status: 'AKTIF', notes: 'Toko Partner Laptop Second' },
     { id: 2, code: 'DLR-002', name: 'Cimahi Laptop Center', contact: '085899887766', address: 'Jl. Raya Cimahi No. 45', status: 'AKTIF', notes: 'Toko Partner Laptop Second' },
     { id: 3, code: 'DLR-003', name: 'Bintang Komputer Trade-in', contact: '081900112233', address: 'Jl. Merdeka No. 88 Bandung', status: 'AKTIF', notes: 'Toko Partner Laptop Second' }
   ],
-  laptops: [],
-  transactions: [],
-  transaction_details: []
   laptops: [
     {
       id: 1,
