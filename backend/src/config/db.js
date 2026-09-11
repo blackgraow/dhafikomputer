@@ -3,10 +3,13 @@ const bcrypt = require('bcryptjs');
 require('dotenv').config();
 
 let isMysqlOnline = false;
+let checkConnectionPromise = null;
 
 const pool = mysql.createPool({
+const poolConfig = {
   host: process.env.DB_HOST || 'localhost',
   port: parseInt(process.env.DB_PORT || '3306'),
+  port: parseInt(process.env.DB_PORT || '3306', 10),
   user: process.env.DB_USER || 'root',
   password: process.env.DB_PASSWORD || '',
   database: process.env.DB_NAME || 'dhafi_inventaris',
@@ -15,6 +18,42 @@ const pool = mysql.createPool({
   queueLimit: 0,
   dateStrings: true
 });
+};
+
+// Enable SSL with rejectUnauthorized: false when connecting to remote hosts (such as Railway TCP proxy)
+if (process.env.DB_SSL === 'true' || (process.env.DB_HOST && process.env.DB_HOST !== 'localhost' && process.env.DB_HOST !== '127.0.0.1')) {
+  poolConfig.ssl = {
+    rejectUnauthorized: false
+  };
+}
+
+const pool = mysql.createPool(poolConfig);
+
+// Asynchronous connection checker without altering database or executing DDL schema changes
+async function checkDbConnection() {
+  try {
+    const conn = await pool.getConnection();
+    await conn.query('SELECT 1');
+    conn.release();
+    isMysqlOnline = true;
+    console.log(`✅ Terhubung ke database MySQL: ${poolConfig.database}`);
+    return true;
+  } catch (err) {
+    isMysqlOnline = false;
+    console.warn(`⚠️ MySQL offline / tidak dapat terhubung (${err.message}). Menggunakan In-Memory Resilience Mode.`);
+    return false;
+  }
+}
+
+function ensureDbConnected() {
+  if (!checkConnectionPromise) {
+    checkConnectionPromise = checkDbConnection();
+  }
+  return checkConnectionPromise;
+}
+
+// Inisialisasi pengecekan koneksi saat modul pertama kali di-load
+ensureDbConnected();
 
 // In-memory fallback dataset for seamless offline / development testing
 const mockDb = {
@@ -42,15 +81,24 @@ const mockDb = {
     { id: 4, code: 'CTG-ULT', name: 'Ultrabook & Tipis', description: 'Laptop ringan, tipis, premium dengan daya tahan baterai panjang' }
   ],
   master_dealers: [
+    { id: 1, code: 'MD-001', name: 'MD 1 (Master Dealer BEC Utama)', contact: '081234567890', address: 'BEC Lantai 1 Blok A-01, Jl. Purnawarman No. 13-15, Bandung', status: 'AKTIF', notes: 'Supplier Resmi Laptop Baru All Brand di BEC' },
+    { id: 2, code: 'MD-002', name: 'MD 2 (Master Dealer BEC Megastore)', contact: '081298765432', address: 'BEC Lantai 2 Blok F-08, Jl. Purnawarman No. 13-15, Bandung', status: 'AKTIF', notes: 'Supplier Laptop Baru All Brand di BEC' },
+    { id: 3, code: 'MD-003', name: 'MD 3 (Master Dealer BEC Partner)', contact: '081311223344', address: 'BEC Gedung Baru Lantai 1 No. 12, Bandung', status: 'AKTIF', notes: 'Supplier Laptop Baru All Brand di BEC' }
     { id: 1, code: 'MD-001', name: 'MD 1 (Master Dealer Utama)', contact: '081234567890', address: 'Jalan Master Supplier No. 1, Jakarta', status: 'AKTIF', notes: 'Supplier Laptop Baru All Brand' },
     { id: 2, code: 'MD-002', name: 'MD 2 (Master Dealer Partner)', contact: '081298765432', address: 'Jalan Master Supplier No. 2, Bandung', status: 'AKTIF', notes: 'Supplier Laptop Baru All Brand' },
     { id: 3, code: 'MD-003', name: 'MD 3 (Master Dealer Regional)', contact: '081311223344', address: 'Jalan Master Supplier No. 3, Surabaya', status: 'AKTIF', notes: 'Supplier Laptop Baru All Brand' }
   ],
   dealers: [
+    { id: 1, code: 'DLR-001', name: 'Toko Laptop Bandung Computer', contact: '085712341234', address: 'BEC Lantai 2 Blok C-15, Bandung', status: 'AKTIF', notes: 'Toko Partner Laptop Second BEC' },
+    { id: 2, code: 'DLR-002', name: 'Sentra Laptop BEC', contact: '085899887766', address: 'BEC Lantai 1 Blok D-05, Bandung', status: 'AKTIF', notes: 'Toko Partner Laptop Second & Tukar Tambah BEC' },
+    { id: 3, code: 'DLR-003', name: 'Bintang Notebook BEC', contact: '081900112233', address: 'BEC Lantai 2 Blok B-10, Bandung', status: 'AKTIF', notes: 'Toko Partner Laptop Second BEC' }
     { id: 1, code: 'DLR-001', name: 'Toko Laptop Bandung Computer', contact: '085712341234', address: 'BEC Lt. 2 Bandung', status: 'AKTIF', notes: 'Toko Partner Laptop Second' },
     { id: 2, code: 'DLR-002', name: 'Cimahi Laptop Center', contact: '085899887766', address: 'Jl. Raya Cimahi No. 45', status: 'AKTIF', notes: 'Toko Partner Laptop Second' },
     { id: 3, code: 'DLR-003', name: 'Bintang Komputer Trade-in', contact: '081900112233', address: 'Jl. Merdeka No. 88 Bandung', status: 'AKTIF', notes: 'Toko Partner Laptop Second' }
   ],
+  laptops: [],
+  transactions: [],
+  transaction_details: []
   laptops: [
     {
       id: 1,
@@ -257,6 +305,7 @@ const mockDb = {
 };
 
 // Auto initialize database & tables if MySQL is running
+// Auto initialize database & tables if MySQL is running (untuk setup lokal)
 async function initDb() {
   try {
     const rootConn = await mysql.createConnection({
@@ -265,9 +314,24 @@ async function initDb() {
       user: process.env.DB_USER || 'root',
       password: process.env.DB_PASSWORD || ''
     });
+    // Coba create database jika di localhost
+    if (!process.env.DB_HOST || process.env.DB_HOST === 'localhost' || process.env.DB_HOST === '127.0.0.1') {
+      try {
+        const rootConn = await mysql.createConnection({
+          host: process.env.DB_HOST || 'localhost',
+          port: parseInt(process.env.DB_PORT || '3306', 10),
+          user: process.env.DB_USER || 'root',
+          password: process.env.DB_PASSWORD || ''
+        });
 
     await rootConn.query(`CREATE DATABASE IF NOT EXISTS \`${process.env.DB_NAME || 'dhafi_inventaris'}\` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;`);
     await rootConn.end();
+        await rootConn.query(`CREATE DATABASE IF NOT EXISTS \`${process.env.DB_NAME || 'dhafi_inventaris'}\` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;`);
+        await rootConn.end();
+      } catch (rootErr) {
+        // Abaikan jika tidak memiliki izin create database di remote host
+      }
+    }
 
     const conn = await pool.getConnection();
 
@@ -473,4 +537,6 @@ module.exports = {
   initDb,
   mockDb,
   isMysqlOnline: () => isMysqlOnline
+  isMysqlOnline: () => isMysqlOnline,
+  ensureDbConnected
 };

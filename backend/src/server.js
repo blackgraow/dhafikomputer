@@ -4,6 +4,7 @@ const path = require('path');
 require('dotenv').config();
 
 const { initDb } = require('./config/db');
+const { initDb, ensureDbConnected } = require('./config/db');
 
 // Import routes
 const authRoutes = require('./routes/authRoutes');
@@ -27,11 +28,25 @@ app.use(express.urlencoded({ extended: true, limit: '20mb' }));
 
 // Health Check Route
 app.get('/api/health', (req, res) => {
+// Root & Health Check Routes
+app.get(['/', '/api', '/api/health'], (req, res) => {
   res.json({
     status: 'OK',
     message: 'Backend Dhafi Komputer Inventory API is running.',
     timestamp: new Date().toISOString()
   });
+});
+
+// Non-blocking DB readiness check middleware for API data routes
+app.use(async (req, res, next) => {
+  try {
+    if (ensureDbConnected) {
+      await ensureDbConnected();
+    }
+  } catch (e) {
+    // Non-fatal, fallback mode handles offline scenario
+  }
+  next();
 });
 
 // API Routes Registration
@@ -72,3 +87,16 @@ app.listen(PORT, async () => {
   // Try initializing DB tables & seeds
   await initDb();
 });
+// Export Express app for Vercel Serverless Functions
+module.exports = app;
+
+// Start Server locally only when run directly
+if (require.main === module) {
+  app.listen(PORT, async () => {
+    console.log(`🚀 Server backend Dhafi Komputer berjalan pada port ${PORT}`);
+    console.log(`📡 Health check URL: http://localhost:${PORT}/api/health`);
+    
+    // Try initializing DB tables & seeds locally
+    await initDb();
+  });
+}
