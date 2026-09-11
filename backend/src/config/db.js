@@ -5,7 +5,6 @@ require('dotenv').config();
 let isMysqlOnline = false;
 let checkConnectionPromise = null;
 
-const pool = mysql.createPool({
 const poolConfig = {
   host: process.env.DB_HOST || 'localhost',
   port: parseInt(process.env.DB_PORT || '3306'),
@@ -17,7 +16,6 @@ const poolConfig = {
   connectionLimit: 10,
   queueLimit: 0,
   dateStrings: true
-});
 };
 
 // Enable SSL with rejectUnauthorized: false when connecting to remote hosts (such as Railway TCP proxy)
@@ -527,7 +525,6 @@ module.exports = {
   pool,
   initDb,
   mockDb,
-  isMysqlOnline: () => isMysqlOnline
   isMysqlOnline: () => isMysqlOnline,
   ensureDbConnected
 };
