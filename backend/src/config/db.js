@@ -14,7 +14,10 @@ const poolConfig = {
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
-  dateStrings: true
+  dateStrings: true,
+  connectTimeout: 20000,
+  enableKeepAlive: true,
+  keepAliveInitialDelay: 10000
 };
 
 // Enable SSL with rejectUnauthorized: false when connecting to remote hosts (such as Railway TCP proxy)
@@ -37,14 +40,19 @@ async function checkDbConnection() {
     return true;
   } catch (err) {
     isMysqlOnline = false;
-    console.warn(`⚠️ MySQL offline / tidak dapat terhubung (${err.message}). Menggunakan In-Memory Resilience Mode.`);
+    console.warn(`⚠️ MySQL offline / tidak dapat terhubung (${err.message}).`);
     return false;
   }
 }
 
-function ensureDbConnected() {
+async function ensureDbConnected() {
+  if (isMysqlOnline) {
+    return true;
+  }
   if (!checkConnectionPromise) {
-    checkConnectionPromise = checkDbConnection();
+    checkConnectionPromise = checkDbConnection().finally(() => {
+      checkConnectionPromise = null;
+    });
   }
   return checkConnectionPromise;
 }
@@ -524,6 +532,12 @@ module.exports = {
   pool,
   initDb,
   mockDb,
-  isMysqlOnline: () => isMysqlOnline,
+  isMysqlOnline: () => {
+    // When a remote database is configured (Railway in production), always prioritize real MySQL queries
+    if (process.env.DB_HOST && process.env.DB_HOST !== 'localhost' && process.env.DB_HOST !== '127.0.0.1') {
+      return true;
+    }
+    return isMysqlOnline;
+  },
   ensureDbConnected
 };
