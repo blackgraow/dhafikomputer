@@ -19,7 +19,6 @@ export const getImageUrl = (url) => {
 };
 
 const api = axios.create({
-  baseURL: '/api',
   baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json'

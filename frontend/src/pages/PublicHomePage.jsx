@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ProductDetailModal from '../components/ProductDetailModal';
-import api from '../services/api';
 import api, { getImageUrl } from '../services/api';
 import heroBannerImg from '../assets/dhafi1.jpeg';
 import storeInteriorImg from '../assets/dhafi2.jpeg';
@@ -194,8 +193,6 @@ const PublicHomePage = () => {
 
   // High quality realistic image fallback based on laptop model & brand
   const getLaptopImage = (laptop) => {
-    if (laptop.primary_image && laptop.primary_image.startsWith('http')) {
-      return laptop.primary_image;
     if (laptop.primary_image) {
       return getImageUrl(laptop.primary_image);
     }
@@ -322,7 +319,6 @@ const PublicHomePage = () => {
             <div className="lg:col-span-6">
               <div className="relative rounded-2xl overflow-hidden border border-slate-200 bg-white p-3 shadow-card group">
                 <img
-                  src="../src/assets/dhafi1.jpeg"
                   src={heroBannerImg}
                   alt="Toko Dhafi Komputer Modern Store"
                   className="w-full h-72 sm:h-96 object-cover rounded-xl group-hover:scale-102 transition-transform duration-300"
@@ -347,7 +343,6 @@ const PublicHomePage = () => {
             <div className="lg:col-span-6">
               <div className="relative rounded-2xl overflow-hidden border border-slate-200 bg-white p-3 shadow-card group">
                 <img
-                  src="../src/assets/dhafi2.jpeg"
                   src={storeInteriorImg}
                   alt="Toko Dhafi Komputer Modern Store"
                   className="w-full h-72 sm:h-96 object-cover rounded-xl group-hover:scale-102 transition-transform duration-300"

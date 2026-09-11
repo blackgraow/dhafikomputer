@@ -3,7 +3,6 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ProductDetailModal from '../components/ProductDetailModal';
-import api from '../services/api';
 import api, { getImageUrl } from '../services/api';
 import {
   Laptop,
@@ -102,8 +101,6 @@ const PublicCatalogPage = () => {
 
   // High quality curated stock photos for fallback
   const getLaptopImage = (laptop) => {
-    if (laptop.primary_image && laptop.primary_image.startsWith('http')) {
-      return laptop.primary_image;
     if (laptop.primary_image) {
       return getImageUrl(laptop.primary_image);
     }
