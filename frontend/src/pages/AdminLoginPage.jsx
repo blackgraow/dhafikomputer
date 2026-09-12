@@ -47,7 +47,7 @@ const AdminLoginPage = () => {
       {/* ========================================================
           LEFT 50% — DARK NAVY BRANDING & VISUAL AREA (#0B1026)
           ======================================================== */}
-      <div className="lg:col-span-6 bg-linear-to-b from-[#07142F] via-[#0B1026] to-[#020617] text-white relative overflow-hidden flex flex-col justify-between p-8 sm:p-12 lg:p-14 border-b lg:border-b-0 lg:border-r border-slate-800/80">
+      <div className="hidden lg:flex lg:col-span-6 bg-linear-to-b from-[#07142F] via-[#0B1026] to-[#020617] text-white relative overflow-hidden flex-col justify-between p-8 sm:p-12 lg:p-14 border-b lg:border-b-0 lg:border-r border-slate-800/80">
         
         {/* Subtle Ambient Light Gradients */}
         <div className="absolute top-0 right-0 -mt-24 -mr-24 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
@@ -69,19 +69,6 @@ const AdminLoginPage = () => {
 
         {/* Center: Large Laptop Visual & Hero Tagline */}
         <div className="relative z-10 my-8 lg:my-0 space-y-7 max-w-lg">
-          
-          {/* Laptop Showcase Visual Card
-          <div className="relative rounded-2xl overflow-hidden bg-slate-900/90 border border-slate-800 p-3 shadow-2xl backdrop-blur-sm">
-            <div className="relative rounded-xl overflow-hidden aspect-16/10 bg-slate-950">
-              <img
-                src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=900&auto=format&fit=crop&q=80"
-                alt="Dhafi Komputer Laptop Management Visual"
-                className="w-full h-full object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none" />
-            </div>
-          </div> */}
-
           {/* Hero Heading & Subtitle */}
           <div className="space-y-3">
             <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-white tracking-tight leading-tight">
@@ -89,7 +76,6 @@ const AdminLoginPage = () => {
               <span className="text-blue-500">Dhafi Komputer</span> dengan mudah.
             </h2>
           </div>
-
         </div>
 
         {/* Bottom: Copyright Footer */}
@@ -102,7 +88,7 @@ const AdminLoginPage = () => {
       {/* ========================================================
           RIGHT 50% — PURE WHITE ADMIN LOGIN FORM (#FFFFFF)
           ======================================================== */}
-      <div className="lg:col-span-6 bg-white flex flex-col justify-between p-8 sm:p-12 lg:p-14 overflow-y-auto">
+      <div className="flex-1 lg:col-span-6 bg-white flex flex-col justify-between p-6 sm:p-12 lg:p-14 overflow-y-auto min-h-screen lg:min-h-0">
         
         {/* Top: Return to Website */}
         <div className="flex items-center justify-start">
@@ -116,7 +102,7 @@ const AdminLoginPage = () => {
         </div>
 
         {/* Center: Login Form Card */}
-        <div className="my-8 lg:my-auto max-w-105 w-full mx-auto space-y-7">
+        <div className="my-auto max-w-105 w-full mx-auto space-y-7 py-6 lg:py-0">
           
           {/* Brand Logo & Headings */}
           <div className="space-y-3">
