@@ -530,7 +530,6 @@ module.exports = {
   createBarangMasuk,
   createBarangKeluar,
   getTransactions,
-  getTransactionDetail
   getTransactionDetail,
   deleteTransaction
 };
