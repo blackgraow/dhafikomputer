@@ -302,6 +302,8 @@ const AdminLaptopsPage = () => {
           payload.customer_contact = null;
           payload.customer_notes = null;
         } else if (payload.source_type === 'PEMILIK') {
+        } else if (payload.source_type === 'PEMILIK' || payload.source_type === 'CUSTOMER') {
+          payload.source_type = 'CUSTOMER';
           payload.master_dealer_id = null;
           payload.dealer_id = null;
         }

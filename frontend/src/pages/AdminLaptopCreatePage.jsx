@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../services/api';
+import { compressImageFile } from '../utils/imageCompressor';
 import {
   Home,
   ChevronRight,
@@ -96,8 +97,24 @@ const AdminLaptopCreatePage = () => {
       ]);
       if (resB.data.success) setBrands(resB.data.data);
       if (resC.data.success) setCategories(resC.data.data);
-      if (resMD.data.success) setMasterDealers(resMD.data.data);
+      if (resMD.data.success) {
+        setMasterDealers(resMD.data.data);
+        if (resMD.data.data.length > 0) {
+          setFormData(prev => ({
+            ...prev,
+            master_dealer_id: prev.master_dealer_id || resMD.data.data[0].id
+          }));
+        }
+      }
       if (resD.data.success) setDealers(resD.data.data);
+
+      setFormData(prev => {
+        if (!prev.code) {
+          const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+          return { ...prev, code: `LPT-${randomSuffix}` };
+        }
+        return prev;
+      });
     } catch (err) {
       console.error('Metadata fetch error:', err);
       showToast('Gagal memuat data master dealer / merek', 'error');
@@ -113,20 +130,22 @@ const AdminLaptopCreatePage = () => {
     if (errors.code) setErrors(prev => ({ ...prev, code: null }));
   };
 
-  // Image Upload handler via FileReader
-  const handleFileChange = (e) => {
+  // Image Upload handler with client-side canvas compression (avoids Vercel 4.5MB limits)
+  const handleFileChange = async (e) => {
     const file = e.target.files[0];
     if (file) {
-      if (file.size > 5 * 1024 * 1024) {
-        showToast('Ukuran file maksimal 5MB', 'error');
+      if (file.size > 15 * 1024 * 1024) {
+        showToast('Ukuran file maksimal 15MB', 'error');
         return;
       }
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreviewImage(reader.result);
-        setFormData(prev => ({ ...prev, primary_image: reader.result }));
-      };
-      reader.readAsDataURL(file);
+      try {
+        const compressed = await compressImageFile(file, 1200, 1200, 0.82);
+        setPreviewImage(compressed);
+        setFormData(prev => ({ ...prev, primary_image: compressed }));
+      } catch (err) {
+        console.error('Image compression error:', err);
+        showToast('Gagal memproses gambar. Pastikan format file adalah JPG/PNG/WEBP.', 'error');
+      }
     }
   };
 
@@ -150,7 +169,7 @@ const AdminLaptopCreatePage = () => {
       if (formData.source_type === 'DEALER' && !formData.dealer_id) {
         errs.dealer_id = 'Dealer mitra wajib dipilih';
       }
-      if (formData.source_type === 'PEMILIK' && !formData.customer_name?.trim()) {
+      if ((formData.source_type === 'PEMILIK' || formData.source_type === 'CUSTOMER') && !formData.customer_name?.trim()) {
         errs.customer_name = 'Nama pemilik/customer wajib diisi';
       }
     }
@@ -199,26 +218,35 @@ const AdminLaptopCreatePage = () => {
 
     setSubmitting(true);
     try {
+      const resolvedSource = formData.condition_type === 'BARU'
+        ? 'MASTER_DEALER'
+        : (formData.source_type === 'PEMILIK' ? 'CUSTOMER' : formData.source_type);
+
+      const isCustomerSource = resolvedSource === 'CUSTOMER';
+      const isDealerSource = resolvedSource === 'DEALER';
+
       const payload = {
         code: formData.code.trim(),
         name: formData.name.trim(),
         brand_id: parseInt(formData.brand_id, 10),
         category_id: parseInt(formData.category_id, 10),
         condition_type: formData.condition_type,
-        source_type: formData.condition_type === 'BARU' ? 'MASTER_DEALER' : formData.source_type,
+        source_type: resolvedSource,
         master_dealer_id: formData.condition_type === 'BARU' && formData.master_dealer_id ? parseInt(formData.master_dealer_id, 10) : null,
-        dealer_id: formData.condition_type === 'SECOND' && formData.source_type === 'DEALER' && formData.dealer_id ? parseInt(formData.dealer_id, 10) : null,
-        customer_name: formData.condition_type === 'SECOND' && formData.source_type === 'PEMILIK' ? formData.customer_name : null,
-        customer_contact: formData.condition_type === 'SECOND' && formData.source_type === 'PEMILIK' ? formData.customer_contact : null,
-        customer_notes: formData.condition_type === 'SECOND' && formData.source_type === 'PEMILIK' ? formData.customer_notes : null,
+        dealer_id: formData.condition_type === 'SECOND' && isDealerSource && formData.dealer_id ? parseInt(formData.dealer_id, 10) : null,
+        customer_name: formData.condition_type === 'SECOND' && isCustomerSource ? formData.customer_name : null,
+        customer_contact: formData.condition_type === 'SECOND' && isCustomerSource ? formData.customer_contact : null,
+        customer_notes: formData.condition_type === 'SECOND' && isCustomerSource ? formData.customer_notes : null,
         processor: formData.processor.trim(),
         ram: formData.ram.trim(),
         storage: formData.storage.trim(),
         gpu: formData.gpu.trim(),
         screen_size: formData.screen_size.trim() || '14 Inch',
+        panel_type: formData.panel_type?.trim() || null,
         warranty: formData.warranty.trim(),
         operating_system: formData.operating_system.trim(),
         color: formData.color.trim(),
+        weight: formData.weight?.trim() || null,
         release_year: formData.release_year.trim(),
         purchase_price: parseFloat(formData.purchase_price) || 0,
         selling_price: parseFloat(formData.selling_price) || 0,
@@ -238,7 +266,9 @@ const AdminLaptopCreatePage = () => {
       }
     } catch (err) {
       console.error('Create laptop error:', err);
-      showToast(err.response?.data?.message || 'Gagal menambahkan laptop baru', 'error');
+      const errMsg = err.response?.data?.message || 
+        (err.response?.status === 413 ? 'Ukuran data foto melebihi batas server (4.5MB).' : 'Gagal menambahkan laptop baru');
+      showToast(errMsg, 'error');
     } finally {
       setSubmitting(false);
     }

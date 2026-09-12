@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import api from '../services/api';
+import { compressImageFile } from '../utils/imageCompressor';
 import {
   ChevronRight,
   Save,
@@ -171,21 +172,23 @@ const AdminLaptopEditPage = () => {
     }
   };
 
-  const handleImageFileChange = (e) => {
+  const handleImageFileChange = async (e) => {
     const file = e.target.files?.[0];
     if (file) {
-      if (file.size > 5 * 1024 * 1024) {
-        showToast('Ukuran file maksimal 5MB', 'error');
+      if (file.size > 15 * 1024 * 1024) {
+        showToast('Ukuran file maksimal 15MB', 'error');
         return;
       }
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreviewImage(reader.result);
-        setFormData(prev => ({ ...prev, primary_image: reader.result }));
+      try {
+        const compressed = await compressImageFile(file, 1200, 1200, 0.82);
+        setPreviewImage(compressed);
+        setFormData(prev => ({ ...prev, primary_image: compressed }));
         setImageFileName(file.name);
-        setImageFileSize(`${(file.size / (1024 * 1024)).toFixed(1)} MB`);
-      };
-      reader.readAsDataURL(file);
+        setImageFileSize('Foto Terkompresi');
+      } catch (err) {
+        console.error('Image compression error:', err);
+        showToast('Gagal memproses gambar.', 'error');
+      }
     }
   };
 
@@ -205,8 +208,12 @@ const AdminLaptopEditPage = () => {
     if (!formData.name.trim()) errs.name = 'Nama laptop wajib diisi';
     if (!formData.brand_id) errs.brand_id = 'Merek wajib dipilih';
     if (!formData.category_id) errs.category_id = 'Kategori wajib dipilih';
-    if (!formData.purchase_price || Number(formData.purchase_price) <= 0) errs.purchase_price = 'Harga beli valid wajib diisi';
-    if (!formData.selling_price || Number(formData.selling_price) <= 0) errs.selling_price = 'Harga jual valid wajib diisi';
+    if (formData.purchase_price === '' || isNaN(formData.purchase_price) || Number(formData.purchase_price) < 0) {
+      errs.purchase_price = 'Harga beli valid wajib diisi';
+    }
+    if (formData.selling_price === '' || isNaN(formData.selling_price) || Number(formData.selling_price) < 0) {
+      errs.selling_price = 'Harga jual valid wajib diisi';
+    }
     if (formData.physical_stock === '' || Number(formData.physical_stock) < 0) errs.physical_stock = 'Stok fisik valid wajib diisi';
 
     if (formData.condition_type === 'BARU' && !formData.master_dealer_id) {
@@ -247,6 +254,13 @@ const AdminLaptopEditPage = () => {
 
     setSubmitting(true);
     try {
+      const resolvedSource = formData.condition_type === 'BARU' 
+        ? 'MASTER_DEALER' 
+        : (formData.source_type === 'PEMILIK' ? 'CUSTOMER' : formData.source_type);
+
+      const isCustomer = resolvedSource === 'CUSTOMER';
+      const isDealer = resolvedSource === 'DEALER';
+
       const payload = {
         code: formData.code.trim(),
         name: formData.name.trim(),
@@ -254,12 +268,12 @@ const AdminLaptopEditPage = () => {
         category_id: Number(formData.category_id),
         condition_type: formData.condition_type,
         item_type: formData.condition_type,
-        source_type: formData.condition_type === 'BARU' ? 'MASTER_DEALER' : formData.source_type,
+        source_type: resolvedSource,
         master_dealer_id: formData.condition_type === 'BARU' && formData.master_dealer_id ? Number(formData.master_dealer_id) : null,
-        dealer_id: formData.condition_type === 'SECOND' && formData.source_type === 'DEALER' && formData.dealer_id ? Number(formData.dealer_id) : null,
-        customer_name: formData.condition_type === 'SECOND' && formData.source_type === 'PEMILIK' ? formData.customer_name : null,
-        customer_contact: formData.condition_type === 'SECOND' && formData.source_type === 'PEMILIK' ? formData.customer_contact : null,
-        customer_notes: formData.condition_type === 'SECOND' && formData.source_type === 'PEMILIK' ? formData.customer_notes : null,
+        dealer_id: formData.condition_type === 'SECOND' && isDealer && formData.dealer_id ? Number(formData.dealer_id) : null,
+        customer_name: formData.condition_type === 'SECOND' && isCustomer ? formData.customer_name : null,
+        customer_contact: formData.condition_type === 'SECOND' && isCustomer ? formData.customer_contact : null,
+        customer_notes: formData.condition_type === 'SECOND' && isCustomer ? formData.customer_notes : null,
         processor: formData.processor || '',
         ram: formData.ram || '',
         storage: formData.storage || '',
@@ -294,7 +308,9 @@ const AdminLaptopEditPage = () => {
       }
     } catch (err) {
       console.error('Update laptop error:', err);
-      showToast(err.response?.data?.message || 'Gagal menyimpan perubahan data laptop.', 'error');
+      const errMsg = err.response?.data?.message || 
+        (err.response?.status === 413 ? 'Ukuran foto melebihi batas server (4.5MB).' : 'Gagal menyimpan perubahan data laptop.');
+      showToast(errMsg, 'error');
     } finally {
       setSubmitting(false);
     }

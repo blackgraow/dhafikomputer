@@ -346,35 +346,43 @@ const createLaptop = async (req, res) => {
     const actualDesc = description || notes || null;
     const actualImage = primary_image || photo_url || null;
 
-    if (!code || !name || !brand_id || !category_id || !actualCondition || !source_type || selling_price === undefined) {
+    let actualSource = source_type;
+    if (actualSource === 'PEMILIK') {
+      actualSource = 'CUSTOMER';
+    }
+    if (actualCondition === 'BARU') {
+      actualSource = 'MASTER_DEALER';
+    }
+
+    if (!code || !name || !brand_id || !category_id || !actualCondition || !actualSource || selling_price === undefined) {
       return res.status(400).json({
         success: false,
         message: 'Mohon lengkapi field wajib (Kode, Nama, Merek, Kategori, Jenis Barang, Sumber, Harga Jual).'
       });
     }
 
-    if (actualCondition === 'BARU' && source_type !== 'MASTER_DEALER') {
+    if (actualCondition === 'BARU' && actualSource !== 'MASTER_DEALER') {
       return res.status(400).json({
         success: false,
         message: 'Laptop Baru wajib bersumber dari Master Dealer.'
       });
     }
 
-    if (source_type === 'MASTER_DEALER' && !master_dealer_id) {
+    if (actualSource === 'MASTER_DEALER' && !master_dealer_id) {
       return res.status(400).json({
         success: false,
         message: 'Master Dealer wajib dipilih untuk pengadaan Laptop Baru.'
       });
     }
 
-    if (source_type === 'DEALER' && !dealer_id) {
+    if (actualSource === 'DEALER' && !dealer_id) {
       return res.status(400).json({
         success: false,
         message: 'Dealer / Toko Lain wajib dipilih.'
       });
     }
 
-    if (source_type === 'CUSTOMER' && (!customer_name || !customer_name.trim())) {
+    if (actualSource === 'CUSTOMER' && (!customer_name || !customer_name.trim())) {
       return res.status(400).json({
         success: false,
         message: 'Nama Pemilik / Customer wajib diisi untuk sumber Customer / Trade-in.'
@@ -413,10 +421,10 @@ const createLaptop = async (req, res) => {
           display_stock, physical_stock, status, description, primary_image
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [
-          code, name, brand_id, category_id, actualCondition, source_type,
+          code, name, brand_id, category_id, actualCondition, actualSource,
           master_dealer_id || null, dealer_id || null, customer_name || null, customer_contact || null, customer_notes || null,
           processor || null, ram || null, storage || null, gpu || null, actualScreenSize, panel_type || null, actualOS, color || null, weight || null,
-          release_year || null, warranty || null, serial_number || null, condition_notes || null, purchase_price || 0, selling_price || 0,
+          release_year || null, warranty || null, serial_number || null, condition_notes || null, parseFloat(purchase_price) || 0, parseFloat(selling_price) || 0,
           initialDisplayStock, initialPhysicalStock, laptopStatus, actualDesc, actualImage
         ]
       );
@@ -434,7 +442,7 @@ const createLaptop = async (req, res) => {
         brand_id: parseInt(brand_id),
         category_id: parseInt(category_id),
         condition_type: actualCondition,
-        source_type,
+        source_type: actualSource,
         master_dealer_id: master_dealer_id ? parseInt(master_dealer_id) : null,
         dealer_id: dealer_id ? parseInt(dealer_id) : null,
         customer_name: customer_name || null,
@@ -471,7 +479,29 @@ const createLaptop = async (req, res) => {
     }
   } catch (error) {
     console.error('Create laptop error:', error);
-    return res.status(500).json({ success: false, message: 'Gagal menambahkan data laptop.' });
+    if (error.code === 'ER_DUP_ENTRY') {
+      return res.status(400).json({
+        success: false,
+        message: `Kode Laptop (SKU) "${req.body.code || ''}" sudah terdaftar. Silakan gunakan kode lain atau klik Auto.`
+      });
+    }
+    if (error.code === 'ER_NO_REFERENCED_ROW_2' || error.code === 'ER_NO_REFERENCED_ROW') {
+      return res.status(400).json({
+        success: false,
+        message: 'Data referensi (Merek, Kategori, atau Dealer) tidak valid.'
+      });
+    }
+    if (error.code === 'ER_DATA_TOO_LONG') {
+      return res.status(400).json({
+        success: false,
+        message: 'Ukuran data atau foto melebihi batas database.'
+      });
+    }
+    return res.status(500).json({ 
+      success: false, 
+      message: 'Gagal menambahkan data laptop.',
+      detail: error.message 
+    });
   }
 };
 
@@ -526,6 +556,14 @@ const updateLaptop = async (req, res) => {
     const actualDesc = description || notes || null;
     const actualImage = primary_image || photo_url || null;
 
+    let actualSource = source_type;
+    if (actualSource === 'PEMILIK') {
+      actualSource = 'CUSTOMER';
+    }
+    if (actualCondition === 'BARU') {
+      actualSource = 'MASTER_DEALER';
+    }
+
     const currentPhysicalStock = parseInt(physical_stock || 0);
     const currentDisplayStock = parseInt(display_stock || 0);
     const laptopStatus = actualStatus || (currentPhysicalStock > 0 ? 'TERSEDIA' : 'HABIS');
@@ -540,10 +578,10 @@ const updateLaptop = async (req, res) => {
           display_stock = ?, physical_stock = ?, status = ?, description = ?, primary_image = ?
         WHERE id = ?`,
         [
-          code || null, name, brand_id, category_id, actualCondition, source_type,
+          code || null, name, brand_id, category_id, actualCondition, actualSource,
           master_dealer_id || null, dealer_id || null, customer_name || null, customer_contact || null, customer_notes || null,
           processor || null, ram || null, storage || null, gpu || null, actualScreenSize, panel_type || null, actualOS, color || null, weight || null,
-          release_year || null, warranty || null, serial_number || null, condition_notes || null, purchase_price || 0, selling_price || 0,
+          release_year || null, warranty || null, serial_number || null, condition_notes || null, parseFloat(purchase_price || 0), parseFloat(selling_price || 0),
           currentDisplayStock, currentPhysicalStock, laptopStatus, actualDesc, actualImage, id
         ]
       );
@@ -563,7 +601,7 @@ const updateLaptop = async (req, res) => {
         brand_id: brand_id ? parseInt(brand_id) : mockDb.laptops[index].brand_id,
         category_id: category_id ? parseInt(category_id) : mockDb.laptops[index].category_id,
         condition_type: actualCondition,
-        source_type: source_type || mockDb.laptops[index].source_type,
+        source_type: actualSource || mockDb.laptops[index].source_type,
         master_dealer_id: master_dealer_id ? parseInt(master_dealer_id) : null,
         dealer_id: dealer_id ? parseInt(dealer_id) : null,
         customer_name: customer_name !== undefined ? customer_name : mockDb.laptops[index].customer_name,
@@ -594,7 +632,23 @@ const updateLaptop = async (req, res) => {
     }
   } catch (error) {
     console.error('Update laptop error:', error);
-    return res.status(500).json({ success: false, message: 'Gagal memperbarui data laptop.' });
+    if (error.code === 'ER_DUP_ENTRY') {
+      return res.status(400).json({
+        success: false,
+        message: `Kode Laptop (SKU) "${req.body.code || ''}" sudah terdaftar pada laptop lain.`
+      });
+    }
+    if (error.code === 'ER_NO_REFERENCED_ROW_2' || error.code === 'ER_NO_REFERENCED_ROW') {
+      return res.status(400).json({
+        success: false,
+        message: 'Data referensi (Merek, Kategori, atau Dealer) tidak valid.'
+      });
+    }
+    return res.status(500).json({ 
+      success: false, 
+      message: 'Gagal memperbarui data laptop.',
+      detail: error.message 
+    });
   }
 };
 
