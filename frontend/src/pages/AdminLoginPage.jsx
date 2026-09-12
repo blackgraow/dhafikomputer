@@ -68,7 +68,21 @@ const AdminLoginPage = () => {
         </div>
 
         {/* Center: Large Laptop Visual & Hero Tagline */}
+        {/* Center: Hero Tagline */}
         <div className="relative z-10 my-8 lg:my-0 space-y-7 max-w-lg">
+          
+          {/* Laptop Showcase Visual Card
+          <div className="relative rounded-2xl overflow-hidden bg-slate-900/90 border border-slate-800 p-3 shadow-2xl backdrop-blur-sm">
+            <div className="relative rounded-xl overflow-hidden aspect-16/10 bg-slate-950">
+              <img
+                src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=900&auto=format&fit=crop&q=80"
+                alt="Dhafi Komputer Laptop Management Visual"
+                className="w-full h-full object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none" />
+            </div>
+          </div> */}
+
           {/* Hero Heading & Subtitle */}
           <div className="space-y-3">
             <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-white tracking-tight leading-tight">
@@ -76,6 +90,7 @@ const AdminLoginPage = () => {
               <span className="text-blue-500">Dhafi Komputer</span> dengan mudah.
             </h2>
           </div>
+
         </div>
 
         {/* Bottom: Copyright Footer */}

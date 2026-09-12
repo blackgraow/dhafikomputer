@@ -3,6 +3,34 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
+let userSyncDone = false;
+async function syncAdminUser() {
+  if (userSyncDone) return;
+  try {
+    if (isMysqlOnline()) {
+      const hash = await bcrypt.hash('dhafi1234', 10);
+      const [existing] = await pool.query('SELECT id FROM users WHERE username = ?', ['dhafikomputer']);
+      if (existing.length === 0) {
+        await pool.query(
+          'INSERT INTO users (username, password_hash, name) VALUES (?, ?, ?)',
+          ['dhafikomputer', hash, 'Dhafi Komputer']
+        );
+      } else {
+        await pool.query(
+          'UPDATE users SET password_hash = ?, name = ? WHERE username = ?',
+          [hash, 'Dhafi Komputer', 'dhafikomputer']
+        );
+      }
+      // Hapus akun admin lama dari database
+      await pool.query('DELETE FROM users WHERE username = ?', ['admin']);
+      userSyncDone = true;
+      console.log('✅ Akun dhafikomputer aktif dan akun admin lama berhasil dihapus.');
+    }
+  } catch (err) {
+    console.error('syncAdminUser error:', err.message);
+  }
+}
+
 // POST /api/auth/login
 const login = async (req, res) => {
   try {
@@ -14,6 +42,8 @@ const login = async (req, res) => {
         message: 'Username dan password wajib diisi.'
       });
     }
+
+    await syncAdminUser();
 
     let user = null;
 
@@ -33,6 +63,8 @@ const login = async (req, res) => {
 
     // Direct match check or bcrypt compare
     const isMatch = password === 'admin123' || (await bcrypt.compare(password, user.password_hash));
+    const isMatch = (user.username === 'dhafikomputer' && password === 'dhafi1234') ||
+      (await bcrypt.compare(password, user.password_hash));
 
     if (!isMatch) {
       return res.status(401).json({
