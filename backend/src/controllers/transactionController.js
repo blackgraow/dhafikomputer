@@ -434,9 +434,103 @@ const getTransactionDetail = async (req, res) => {
   }
 };
 
+// DELETE /api/transactions/:id
+const deleteTransaction = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { revert_stock = 'false' } = req.query;
+
+    if (isMysqlOnline()) {
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+
+        const [rows] = await connection.query('SELECT * FROM transactions WHERE id = ?', [id]);
+        if (rows.length === 0) {
+          await connection.rollback();
+          return res.status(404).json({ success: false, message: 'Transaksi tidak ditemukan.' });
+        }
+        const tx = rows[0];
+
+        // If revert_stock is requested, adjust laptop stock accordingly
+        if (revert_stock === 'true' || revert_stock === true) {
+          const [details] = await connection.query('SELECT laptop_id, quantity FROM transaction_details WHERE transaction_id = ?', [id]);
+          for (const item of details) {
+            if (tx.type === 'MASUK') {
+              // Revert stock in by deducting
+              await connection.query(
+                `UPDATE laptops SET physical_stock = GREATEST(0, physical_stock - ?) WHERE id = ?`,
+                [item.quantity, item.laptop_id]
+              );
+            } else if (tx.type === 'KELUAR') {
+              // Revert stock out by adding back
+              await connection.query(
+                `UPDATE laptops SET physical_stock = physical_stock + ?, status = 'TERSEDIA' WHERE id = ?`,
+                [item.quantity, item.laptop_id]
+              );
+            }
+          }
+        }
+
+        // Delete child rows first
+        await connection.query('DELETE FROM transaction_details WHERE transaction_id = ?', [id]);
+        // Delete transaction header
+        await connection.query('DELETE FROM transactions WHERE id = ?', [id]);
+
+        await connection.commit();
+
+        return res.json({
+          success: true,
+          message: `Transaksi ${tx.transaction_code} berhasil dihapus.`
+        });
+      } catch (err) {
+        await connection.rollback();
+        console.error('Delete transaction error:', err);
+        return res.status(500).json({ success: false, message: 'Gagal menghapus transaksi.' });
+      } finally {
+        connection.release();
+      }
+    } else {
+      const txIndex = mockDb.transactions.findIndex(t => t.id === parseInt(id));
+      if (txIndex === -1) {
+        return res.status(404).json({ success: false, message: 'Transaksi tidak ditemukan.' });
+      }
+      const tx = mockDb.transactions[txIndex];
+
+      if (revert_stock === 'true' || revert_stock === true) {
+        const details = mockDb.transaction_details.filter(td => td.transaction_id === tx.id);
+        for (const item of details) {
+          const laptop = mockDb.laptops.find(l => l.id === item.laptop_id);
+          if (laptop) {
+            if (tx.type === 'MASUK') {
+              laptop.physical_stock = Math.max(0, laptop.physical_stock - item.quantity);
+            } else if (tx.type === 'KELUAR') {
+              laptop.physical_stock += item.quantity;
+              laptop.status = 'TERSEDIA';
+            }
+          }
+        }
+      }
+
+      mockDb.transaction_details = mockDb.transaction_details.filter(td => td.transaction_id !== tx.id);
+      mockDb.transactions.splice(txIndex, 1);
+
+      return res.json({
+        success: true,
+        message: `Transaksi ${tx.transaction_code} berhasil dihapus.`
+      });
+    }
+  } catch (error) {
+    console.error('Delete transaction error:', error);
+    return res.status(500).json({ success: false, message: 'Gagal menghapus transaksi.' });
+  }
+};
+
 module.exports = {
   createBarangMasuk,
   createBarangKeluar,
   getTransactions,
   getTransactionDetail
+  getTransactionDetail,
+  deleteTransaction
 };
