@@ -53,15 +53,6 @@ const AdminLoginPage = () => {
         <div className="absolute top-0 right-0 -mt-24 -mr-24 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 -mb-24 -ml-24 w-80 h-80 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none" />
 
-        {/* Decorative Dot Grid in Bottom Right */}
-        <div 
-          className="absolute bottom-6 right-6 w-36 h-36 opacity-15 pointer-events-none"
-          style={{
-            backgroundImage: 'radial-gradient(#93c5fd 1.5px, transparent 1.5px)',
-            backgroundSize: '14px 14px'
-          }}
-        />
-
         {/* Top: Dhafi Komputer Brand Header */}
         <div className="relative z-10">
           <Link to="/" className="inline-flex items-center gap-3.5 group">

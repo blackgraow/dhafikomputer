@@ -18,7 +18,6 @@ import {
   Clock,
   Package,
   Layers,
-  ChevronLeft
   ChevronLeft,
   Trash2
 } from 'lucide-react';
