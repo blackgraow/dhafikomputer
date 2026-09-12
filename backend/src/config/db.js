@@ -65,9 +65,6 @@ const mockDb = {
   users: [
     {
       id: 1,
-      username: 'admin',
-      password_hash: '$2b$10$X860x4Q4B1Kz7K2XmJ4v2e7u1y5E4v7d2Z3X4Y5Z6W7V8U9T0S1R2', // admin123
-      name: 'Admin Dhafi Komputer'
       username: 'dhafikomputer',
       password_hash: bcrypt.hashSync('dhafi1234', 10),
       name: 'Dhafi Komputer'

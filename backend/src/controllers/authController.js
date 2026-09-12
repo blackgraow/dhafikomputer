@@ -62,7 +62,6 @@ const login = async (req, res) => {
     }
 
     // Direct match check or bcrypt compare
-    const isMatch = password === 'admin123' || (await bcrypt.compare(password, user.password_hash));
     const isMatch = (user.username === 'dhafikomputer' && password === 'dhafi1234') ||
       (await bcrypt.compare(password, user.password_hash));
 
