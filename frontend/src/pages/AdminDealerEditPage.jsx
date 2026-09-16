@@ -227,6 +227,7 @@ const AdminDealerEditPage = () => {
             <input
               type="text"
               required
+              placeholder="Contoh: Toko Berkah Komputer / Mitra Jaya Laptop"
               value={formData.name}
               onChange={(e) => handleInputChange('name', e.target.value)}
               className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all ${
@@ -243,6 +244,7 @@ const AdminDealerEditPage = () => {
               <Phone className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
+                placeholder="Contoh: 0812-3456-7890"
                 value={formData.contact}
                 onChange={(e) => handleInputChange('contact', e.target.value)}
                 className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-mono focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
@@ -256,6 +258,7 @@ const AdminDealerEditPage = () => {
             <textarea
               rows={3}
               maxLength={255}
+              placeholder="Contoh: Mall BEC Lantai 1 Blok C-05, Bandung"
               value={formData.address}
               onChange={(e) => handleInputChange('address', e.target.value)}
               className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all resize-none"

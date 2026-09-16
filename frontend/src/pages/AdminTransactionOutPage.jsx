@@ -334,6 +334,7 @@ const AdminTransactionOutPage = () => {
                 <label className="block font-semibold text-slate-700">No. Nota / Faktur Penjualan</label>
                 <input
                   type="text"
+                  placeholder="Contoh: NOTA-2024/09/001 atau INV-8891"
                   value={referenceDoc}
                   onChange={(e) => setReferenceDoc(e.target.value)}
                   className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all font-mono"
@@ -415,6 +416,7 @@ const AdminTransactionOutPage = () => {
                     <input
                       type="text"
                       required
+                      placeholder="Contoh: Bpk. Ahmad R."
                       value={customerName}
                       onChange={(e) => setCustomerName(e.target.value)}
                       className="w-full px-3 py-2 rounded-xl bg-white border border-slate-200 text-slate-900 focus:outline-none"
@@ -424,16 +426,18 @@ const AdminTransactionOutPage = () => {
                     <label className="font-semibold text-slate-700">No. Telepon / WhatsApp</label>
                     <input
                       type="text"
+                      placeholder="Contoh: 0812-3456-7890"
                       value={customerPhone}
                       onChange={(e) => setCustomerPhone(e.target.value)}
                       className="w-full px-3 py-2 rounded-xl bg-white border border-slate-200 text-slate-900 font-mono focus:outline-none"
                     />
-                  </div>Alamat Pengiriman / Domisili
+                  </div>
                 </div>
                 <div className="space-y-1">
                   <label className="font-semibold text-slate-700">Alamat Pengiriman / Domisili (Opsional)</label>
                   <input
                     type="text"
+                    placeholder="Contoh: Jl. Merdeka No. 45, Bandung"
                     value={customerAddress}
                     onChange={(e) => setCustomerAddress(e.target.value)}
                     className="w-full px-3 py-2 rounded-xl bg-white border border-slate-200 text-slate-900 focus:outline-none"
@@ -640,6 +644,7 @@ const AdminTransactionOutPage = () => {
             <textarea
               rows={3}
               maxLength={255}
+              placeholder="Tulis catatan atau keterangan tambahan terkait penjualan/pengeluaran barang ini..."
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all resize-none"

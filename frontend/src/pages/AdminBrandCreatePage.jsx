@@ -205,6 +205,7 @@ const AdminBrandCreatePage = () => {
             <input
               type="text"
               required
+              placeholder="Contoh: ASUS, Lenovo, HP, Dell, Apple, Acer"
               value={formData.name}
               onChange={(e) => handleInputChange('name', e.target.value)}
               className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all ${
@@ -220,6 +221,7 @@ const AdminBrandCreatePage = () => {
             <textarea
               rows={4}
               maxLength={255}
+              placeholder="Tulis deskripsi atau profil singkat merek ini..."
               value={formData.description}
               onChange={(e) => handleInputChange('description', e.target.value)}
               className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all resize-none"

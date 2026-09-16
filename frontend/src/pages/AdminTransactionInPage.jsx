@@ -325,6 +325,7 @@ const AdminTransactionInPage = () => {
                 <label className="block font-semibold text-slate-700">No. Faktur / Surat Jalan</label>
                 <input
                   type="text"
+                  placeholder="Contoh: INV-2024/09/001 atau SJ-8891"
                   value={referenceDoc}
                   onChange={(e) => setReferenceDoc(e.target.value)}
                   className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all font-mono"
@@ -612,6 +613,7 @@ const AdminTransactionInPage = () => {
             <textarea
               rows={3}
               maxLength={255}
+              placeholder="Tulis catatan atau keterangan tambahan terkait pengadaan barang ini..."
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all resize-none"

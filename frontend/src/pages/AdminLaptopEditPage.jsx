@@ -439,6 +439,7 @@ const AdminLaptopEditPage = () => {
                 <input
                   type="text"
                   required
+                  placeholder="Contoh: Lenovo ThinkPad X1 Carbon Gen 10"
                   value={formData.name}
                   onChange={(e) => handleInputChange('name', e.target.value)}
                   className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all ${
@@ -590,6 +591,7 @@ const AdminLaptopEditPage = () => {
                 <label className="block font-semibold text-slate-700">Processor</label>
                 <input
                   type="text"
+                  placeholder="Contoh: Intel Core i5-1240P / AMD Ryzen 5 5600H"
                   value={formData.processor}
                   onChange={(e) => handleInputChange('processor', e.target.value)}
                   className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
@@ -601,6 +603,7 @@ const AdminLaptopEditPage = () => {
                 <label className="block font-semibold text-slate-700">RAM</label>
                 <input
                   type="text"
+                  placeholder="Contoh: 16GB DDR4 / 8GB LPDDR5"
                   value={formData.ram}
                   onChange={(e) => handleInputChange('ram', e.target.value)}
                   className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
@@ -612,6 +615,7 @@ const AdminLaptopEditPage = () => {
                 <label className="block font-semibold text-slate-700">Storage</label>
                 <input
                   type="text"
+                  placeholder="Contoh: 512GB NVMe SSD / 1TB SSD"
                   value={formData.storage}
                   onChange={(e) => handleInputChange('storage', e.target.value)}
                   className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
@@ -623,6 +627,7 @@ const AdminLaptopEditPage = () => {
                 <label className="block font-semibold text-slate-700">GPU / Kartu Grafis</label>
                 <input
                   type="text"
+                  placeholder="Contoh: Intel Iris Xe / NVIDIA RTX 3050"
                   value={formData.gpu}
                   onChange={(e) => handleInputChange('gpu', e.target.value)}
                   className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
@@ -634,6 +639,7 @@ const AdminLaptopEditPage = () => {
                 <label className="block font-semibold text-slate-700">Ukuran Layar (Display)</label>
                 <input
                   type="text"
+                  placeholder="Contoh: 14&quot; FHD IPS (1920x1080)"
                   value={formData.screen_size}
                   onChange={(e) => handleInputChange('screen_size', e.target.value)}
                   className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
@@ -645,6 +651,7 @@ const AdminLaptopEditPage = () => {
                 <label className="block font-semibold text-slate-700">Garansi</label>
                 <input
                   type="text"
+                  placeholder="Contoh: Resmi 2 Tahun / Toko 1 Bulan"
                   value={formData.warranty}
                   onChange={(e) => handleInputChange('warranty', e.target.value)}
                   className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
@@ -656,6 +663,7 @@ const AdminLaptopEditPage = () => {
                 <label className="block font-semibold text-slate-700">Sistem Operasi</label>
                 <input
                   type="text"
+                  placeholder="Contoh: Windows 11 Home / DOS"
                   value={formData.operating_system}
                   onChange={(e) => handleInputChange('operating_system', e.target.value)}
                   className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
@@ -667,6 +675,7 @@ const AdminLaptopEditPage = () => {
                 <label className="block font-semibold text-slate-700">Tipe Panel</label>
                 <input
                   type="text"
+                  placeholder="Contoh: IPS 100% sRGB / OLED 2.8K"
                   value={formData.panel_type}
                   onChange={(e) => handleInputChange('panel_type', e.target.value)}
                   className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
@@ -678,6 +687,7 @@ const AdminLaptopEditPage = () => {
                 <label className="block font-semibold text-slate-700">Warna</label>
                 <input
                   type="text"
+                  placeholder="Contoh: Mineral Gray / Eclipse Black"
                   value={formData.color}
                   onChange={(e) => handleInputChange('color', e.target.value)}
                   className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
@@ -689,6 +699,7 @@ const AdminLaptopEditPage = () => {
                 <label className="block font-semibold text-slate-700">Berat</label>
                 <input
                   type="text"
+                  placeholder="Contoh: 1.35 kg"
                   value={formData.weight}
                   onChange={(e) => handleInputChange('weight', e.target.value)}
                   className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
@@ -700,6 +711,7 @@ const AdminLaptopEditPage = () => {
                 <label className="block font-semibold text-slate-700">Tahun Rilis</label>
                 <input
                   type="number"
+                  placeholder="Contoh: 2024"
                   value={formData.release_year}
                   onChange={(e) => handleInputChange('release_year', e.target.value)}
                   className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
@@ -736,6 +748,7 @@ const AdminLaptopEditPage = () => {
                   <input
                     type="number"
                     required
+                    placeholder="0"
                     value={formData.purchase_price}
                     onChange={(e) => handleInputChange('purchase_price', e.target.value)}
                     className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 font-mono text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all ${
@@ -756,6 +769,7 @@ const AdminLaptopEditPage = () => {
                   <input
                     type="number"
                     required
+                    placeholder="0"
                     value={formData.selling_price}
                     onChange={(e) => handleInputChange('selling_price', e.target.value)}
                     className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 font-mono font-bold text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all ${
@@ -772,6 +786,7 @@ const AdminLaptopEditPage = () => {
                 <input
                   type="number"
                   min="0"
+                  placeholder="0"
                   value={formData.display_stock}
                   onChange={(e) => handleInputChange('display_stock', e.target.value)}
                   className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-mono text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
@@ -787,6 +802,7 @@ const AdminLaptopEditPage = () => {
                   type="number"
                   required
                   min="0"
+                  placeholder="0"
                   value={formData.physical_stock}
                   onChange={(e) => handleInputChange('physical_stock', e.target.value)}
                   className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 font-mono text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all ${
@@ -829,6 +845,7 @@ const AdminLaptopEditPage = () => {
                 <label className="block font-semibold text-slate-700">URL Foto Utama (Opsional)</label>
                 <input
                   type="url"
+                  placeholder="https://example.com/foto-laptop.jpg"
                   value={formData.primary_image.startsWith('data:') ? '' : formData.primary_image}
                   onChange={(e) => {
                     const val = e.target.value;
@@ -927,6 +944,7 @@ const AdminLaptopEditPage = () => {
               <textarea
                 rows={3}
                 maxLength={255}
+                placeholder="Tulis catatan kondisi laptop, kelengkapan unit, minus fisik (jika ada), dll..."
                 value={formData.description}
                 onChange={(e) => handleInputChange('description', e.target.value)}
                 className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all resize-none"

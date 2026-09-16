@@ -363,6 +363,7 @@ const AdminLaptopCreatePage = () => {
                 </div>
                 <input
                   type="text"
+                  placeholder="Contoh: LPT-001 (atau klik Auto)"
                   value={formData.code}
                   onChange={(e) => {
                     setFormData({ ...formData, code: e.target.value });
@@ -380,6 +381,7 @@ const AdminLaptopCreatePage = () => {
                 <label className="block font-semibold text-slate-700 mb-1.5">Nama Laptop</label>
                 <input
                   type="text"
+                  placeholder="Contoh: Lenovo ThinkPad X1 Carbon Gen 10"
                   value={formData.name}
                   onChange={(e) => {
                     setFormData({ ...formData, name: e.target.value });
@@ -526,7 +528,7 @@ const AdminLaptopCreatePage = () => {
                   <label className="block font-semibold text-slate-700 mb-1.5">Nama Pemilik / Customer *</label>
                   <input
                     type="text"
-                    placeholder="e.g. Budi Santoso"
+                    placeholder="Contoh: Budi Santoso"
                     value={formData.customer_name}
                     onChange={(e) => setFormData({ ...formData, customer_name: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
@@ -536,7 +538,7 @@ const AdminLaptopCreatePage = () => {
                   <label className="block font-semibold text-slate-700 mb-1.5">Kontak Customer</label>
                   <input
                     type="text"
-                    placeholder="0812-xxxx-xxxx"
+                    placeholder="Contoh: 0812-3456-7890"
                     value={formData.customer_contact}
                     onChange={(e) => setFormData({ ...formData, customer_contact: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
@@ -562,6 +564,7 @@ const AdminLaptopCreatePage = () => {
                 <label className="block font-semibold text-slate-700 mb-1">Processor</label>
                 <input
                   type="text"
+                  placeholder="Contoh: Intel Core i5-1240P / AMD Ryzen 5 5600H"
                   value={formData.processor}
                   onChange={(e) => setFormData({ ...formData, processor: e.target.value })}
                   className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
@@ -573,6 +576,7 @@ const AdminLaptopCreatePage = () => {
                 <label className="block font-semibold text-slate-700 mb-1">RAM</label>
                 <input
                   type="text"
+                  placeholder="Contoh: 16GB DDR4 / 8GB LPDDR5"
                   value={formData.ram}
                   onChange={(e) => setFormData({ ...formData, ram: e.target.value })}
                   className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
@@ -584,6 +588,7 @@ const AdminLaptopCreatePage = () => {
                 <label className="block font-semibold text-slate-700 mb-1">Storage</label>
                 <input
                   type="text"
+                  placeholder="Contoh: 512GB NVMe SSD / 1TB SSD"
                   value={formData.storage}
                   onChange={(e) => setFormData({ ...formData, storage: e.target.value })}
                   className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
@@ -595,6 +600,7 @@ const AdminLaptopCreatePage = () => {
                 <label className="block font-semibold text-slate-700 mb-1">GPU / Kartu Grafis</label>
                 <input
                   type="text"
+                  placeholder="Contoh: Intel Iris Xe / NVIDIA RTX 3050"
                   value={formData.gpu}
                   onChange={(e) => setFormData({ ...formData, gpu: e.target.value })}
                   className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
@@ -606,6 +612,7 @@ const AdminLaptopCreatePage = () => {
                 <label className="block font-semibold text-slate-700 mb-1">Ukuran Layar (Display)</label>
                 <input
                   type="text"
+                  placeholder="Contoh: 14&quot; FHD IPS (1920x1080)"
                   value={formData.screen_size}
                   onChange={(e) => setFormData({ ...formData, screen_size: e.target.value })}
                   className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
@@ -617,6 +624,7 @@ const AdminLaptopCreatePage = () => {
                 <label className="block font-semibold text-slate-700 mb-1">Garansi</label>
                 <input
                   type="text"
+                  placeholder="Contoh: Resmi 2 Tahun / Toko 1 Bulan"
                   value={formData.warranty}
                   onChange={(e) => setFormData({ ...formData, warranty: e.target.value })}
                   className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
@@ -628,6 +636,7 @@ const AdminLaptopCreatePage = () => {
                 <label className="block font-semibold text-slate-700 mb-1">Sistem Operasi</label>
                 <input
                   type="text"
+                  placeholder="Contoh: Windows 11 Home / DOS"
                   value={formData.operating_system}
                   onChange={(e) => setFormData({ ...formData, operating_system: e.target.value })}
                   className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
@@ -639,6 +648,7 @@ const AdminLaptopCreatePage = () => {
                 <label className="block font-semibold text-slate-700 mb-1">Tipe Panel</label>
                 <input
                   type="text"
+                  placeholder="Contoh: IPS 100% sRGB / OLED 2.8K"
                   value={formData.panel_type}
                   onChange={(e) => setFormData({ ...formData, panel_type: e.target.value })}
                   className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
@@ -650,6 +660,7 @@ const AdminLaptopCreatePage = () => {
                 <label className="block font-semibold text-slate-700 mb-1">Warna</label>
                 <input
                   type="text"
+                  placeholder="Contoh: Mineral Gray / Eclipse Black"
                   value={formData.color}
                   onChange={(e) => setFormData({ ...formData, color: e.target.value })}
                   className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
@@ -661,6 +672,7 @@ const AdminLaptopCreatePage = () => {
                 <label className="block font-semibold text-slate-700 mb-1">Berat</label>
                 <input
                   type="text"
+                  placeholder="Contoh: 1.35 kg"
                   value={formData.weight}
                   onChange={(e) => setFormData({ ...formData, weight: e.target.value })}
                   className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
@@ -672,6 +684,7 @@ const AdminLaptopCreatePage = () => {
                 <label className="block font-semibold text-slate-700 mb-1">Tahun Rilis</label>
                 <input
                   type="text"
+                  placeholder="Contoh: 2024"
                   value={formData.release_year}
                   onChange={(e) => setFormData({ ...formData, release_year: e.target.value })}
                   className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none"
@@ -814,6 +827,7 @@ const AdminLaptopCreatePage = () => {
                 <label className="block font-semibold text-slate-700 mb-1.5">URL Foto Utama (Opsional)</label>
                 <input
                   type="url"
+                  placeholder="https://example.com/foto-laptop.jpg"
                   value={formData.primary_image}
                   onChange={(e) => {
                     setFormData({ ...formData, primary_image: e.target.value });
@@ -898,6 +912,7 @@ const AdminLaptopCreatePage = () => {
               <textarea
                 rows="3"
                 maxLength="255"
+                placeholder="Tulis catatan kondisi laptop, kelengkapan unit, minus fisik (jika ada), dll..."
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                 className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs transition-colors focus:outline-none resize-none"
