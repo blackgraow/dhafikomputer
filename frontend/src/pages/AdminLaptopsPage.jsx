@@ -485,81 +485,99 @@ const AdminLaptopsPage = () => {
 
             {/* Filter Popover Panel */}
             {showFilterPanel && (
-              <div className="absolute right-0 mt-2 w-72 bg-white rounded-2xl border border-slate-200 shadow-xl p-4 z-40 space-y-3.5 animate-in fade-in zoom-in-95 duration-100">
-                <div className="flex items-center justify-between pb-2 border-b border-slate-100">
-                  <span className="font-bold text-xs text-slate-900">Filter Inventaris</span>
+              <>
+                {/* Mobile Backdrop Overlay */}
+                <div
+                  className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-50 sm:hidden"
+                  onClick={() => setShowFilterPanel(false)}
+                />
+
+                {/* Filter Container: Floating bottom sheet on mobile, popover dropdown on desktop */}
+                <div className="fixed inset-x-3 bottom-4 sm:inset-auto sm:absolute sm:right-0 sm:mt-2 w-auto sm:w-80 max-h-[85vh] sm:max-h-none overflow-y-auto bg-white rounded-2xl border border-slate-200 shadow-2xl sm:shadow-xl p-4 z-50 space-y-3.5 animate-in fade-in zoom-in-95 duration-150">
+                  <div className="flex items-center justify-between pb-2 border-b border-slate-100">
+                    <span className="font-bold text-xs text-slate-900">Filter Inventaris</span>
+                    <div className="flex items-center gap-2.5">
+                      <button
+                        onClick={handleResetFilters}
+                        className="text-[11px] text-blue-600 hover:underline font-medium cursor-pointer"
+                      >
+                        Reset
+                      </button>
+                      <button
+                        onClick={() => setShowFilterPanel(false)}
+                        className="sm:hidden p-1 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer"
+                        aria-label="Tutup Filter"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Filter Merek */}
+                  <div className="space-y-1">
+                    <label className="block text-[11px] font-semibold text-slate-600">Merek</label>
+                    <select
+                      value={filterBrand}
+                      onChange={(e) => { setFilterBrand(e.target.value); setCurrentPage(1); }}
+                      className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 text-xs focus:outline-none"
+                    >
+                      <option value="">Semua Merek</option>
+                      {brands.map(b => <option key={b.id} value={b.id}>{b.name}</option>)}
+                    </select>
+                  </div>
+
+                  {/* Filter Kategori */}
+                  <div className="space-y-1">
+                    <label className="block text-[11px] font-semibold text-slate-600">Kategori</label>
+                    <select
+                      value={filterCategory}
+                      onChange={(e) => { setFilterCategory(e.target.value); setCurrentPage(1); }}
+                      className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 text-xs focus:outline-none"
+                    >
+                      <option value="">Semua Kategori</option>
+                      {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+                    </select>
+                  </div>
+
+                  {/* Filter Jenis Barang */}
+                  <div className="space-y-1">
+                    <label className="block text-[11px] font-semibold text-slate-600">Jenis Barang</label>
+                    <select
+                      value={filterCondition}
+                      onChange={(e) => { setFilterCondition(e.target.value); setCurrentPage(1); }}
+                      className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 text-xs focus:outline-none"
+                    >
+                      <option value="">Semua</option>
+                      <option value="BARU">Baru</option>
+                      <option value="SECOND">Second</option>
+                    </select>
+                  </div>
+
+                  {/* Filter Status */}
+                  <div className="space-y-1">
+                    <label className="block text-[11px] font-semibold text-slate-600">Status</label>
+                    <select
+                      value={filterStatus}
+                      onChange={(e) => { setFilterStatus(e.target.value); setCurrentPage(1); }}
+                      className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 text-xs focus:outline-none"
+                    >
+                      <option value="">Semua</option>
+                      <option value="TERSEDIA">Tersedia</option>
+                      <option value="HABIS">Habis</option>
+                      <option value="DISPLAY">Display</option>
+                      <option value="TERJUAL">Terjual</option>
+                      <option value="TIDAK_AKTIF">Tidak Aktif</option>
+                    </select>
+                  </div>
+
                   <button
-                    onClick={handleResetFilters}
-                    className="text-[11px] text-blue-600 hover:underline font-medium"
+                    onClick={() => setShowFilterPanel(false)}
+                    className="w-full py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs transition-colors cursor-pointer"
                   >
-                    Reset
+                    Terapkan Filter
                   </button>
                 </div>
-
-                {/* Filter Merek */}
-                <div className="space-y-1">
-                  <label className="block text-[11px] font-semibold text-slate-600">Merek</label>
-                  <select
-                    value={filterBrand}
-                    onChange={(e) => { setFilterBrand(e.target.value); setCurrentPage(1); }}
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 text-xs focus:outline-none"
-                  >
-                    <option value="">Semua Merek</option>
-                    {brands.map(b => <option key={b.id} value={b.id}>{b.name}</option>)}
-                  </select>
-                </div>
-
-                {/* Filter Kategori */}
-                <div className="space-y-1">
-                  <label className="block text-[11px] font-semibold text-slate-600">Kategori</label>
-                  <select
-                    value={filterCategory}
-                    onChange={(e) => { setFilterCategory(e.target.value); setCurrentPage(1); }}
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 text-xs focus:outline-none"
-                  >
-                    <option value="">Semua Kategori</option>
-                    {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
-                  </select>
-                </div>
-
-                {/* Filter Jenis Barang */}
-                <div className="space-y-1">
-                  <label className="block text-[11px] font-semibold text-slate-600">Jenis Barang</label>
-                  <select
-                    value={filterCondition}
-                    onChange={(e) => { setFilterCondition(e.target.value); setCurrentPage(1); }}
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 text-xs focus:outline-none"
-                  >
-                    <option value="">Semua</option>
-                    <option value="BARU">Baru</option>
-                    <option value="SECOND">Second</option>
-                  </select>
-                </div>
-
-                {/* Filter Status */}
-                <div className="space-y-1">
-                  <label className="block text-[11px] font-semibold text-slate-600">Status</label>
-                  <select
-                    value={filterStatus}
-                    onChange={(e) => { setFilterStatus(e.target.value); setCurrentPage(1); }}
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 text-xs focus:outline-none"
-                  >
-                    <option value="">Semua</option>
-                    <option value="TERSEDIA">Tersedia</option>
-                    <option value="HABIS">Habis</option>
-                    <option value="DISPLAY">Display</option>
-                    <option value="TERJUAL">Terjual</option>
-                    <option value="TIDAK_AKTIF">Tidak Aktif</option>
-                  </select>
-                </div>
-
-                <button
-                  onClick={() => setShowFilterPanel(false)}
-                  className="w-full py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs transition-colors cursor-pointer"
-                >
-                  Terapkan Filter
-                </button>
-              </div>
+              </>
             )}
           </div>
 
@@ -578,7 +596,7 @@ const AdminLaptopsPage = () => {
             </button>
 
             {showSortDropdown && (
-              <div className="absolute right-0 mt-2 w-52 bg-white rounded-2xl border border-slate-200 shadow-xl py-1.5 z-40 text-xs animate-in fade-in zoom-in-95 duration-100">
+              <div className="absolute left-0 sm:left-auto sm:right-0 mt-2 w-52 max-w-[calc(100vw-2rem)] bg-white rounded-2xl border border-slate-200 shadow-xl py-1.5 z-40 text-xs animate-in fade-in zoom-in-95 duration-100">
                 <span className="px-3 py-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
                   Opsi Pengurutan
                 </span>
