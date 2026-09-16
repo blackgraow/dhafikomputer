@@ -167,158 +167,98 @@ const AdminBrandCreatePage = () => {
       </div>
 
       {/* ========================================================
-          2. TWO-COLUMN LAYOUT: FORM UTAMA & LIVE PREVIEW
+          2. FORM UTAMA
           ======================================================== */}
-      <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <form onSubmit={handleSubmit} className="max-w-3xl space-y-6">
         
-        {/* LEFT COLUMN (7 COLS): FORM UTAMA */}
-        <div className="lg:col-span-7 space-y-6">
+        <div className="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-6 sm:p-7 space-y-6">
           
-          <div className="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-6 sm:p-7 space-y-6">
-            
-            {/* Card Header */}
-            <div className="flex items-center gap-2.5 pb-4 border-b border-slate-100">
-              <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-100">
-                <Tag className="w-4 h-4" />
-              </div>
-              <h2 className="text-sm font-bold text-slate-900">Informasi Merek</h2>
+          {/* Card Header */}
+          <div className="flex items-center gap-2.5 pb-4 border-b border-slate-100">
+            <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-100">
+              <Tag className="w-4 h-4" />
             </div>
-
-            {/* 1. KODE MEREK */}
-            <div className="space-y-1.5 text-xs">
-              <div className="flex items-center justify-between">
-                <label className="block font-semibold text-slate-700">Kode Merek</label>
-                <span className="text-[11px] text-slate-400 flex items-center gap-1">
-                  <Lock className="w-3 h-3 text-slate-400" /> Dibuat Otomatis
-                </span>
-              </div>
-              <input
-                type="text"
-                readOnly
-                value={formData.code}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-100/80 border border-slate-200 text-slate-600 font-mono font-bold text-xs cursor-not-allowed select-none"
-              />
-            </div>
-
-            {/* 2. NAMA MEREK */}
-            <div className="space-y-1.5 text-xs">
-              <label className="block font-semibold text-slate-700">
-                Nama Merek
-              </label>
-              <input
-                type="text"
-                required
-                value={formData.name}
-                onChange={(e) => handleInputChange('name', e.target.value)}
-                className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all ${
-                  errors.name ? 'border-rose-300' : 'border-slate-200'
-                }`}
-              />
-              {errors.name && <span className="text-[11px] text-rose-500 font-medium block">{errors.name}</span>}
-            </div>
-
-            {/* 3. DESKRIPSI (OPSIONAL) */}
-            <div className="space-y-1.5 text-xs">
-              <label className="block font-semibold text-slate-700">Deskripsi</label>
-              <textarea
-                rows={4}
-                maxLength={255}
-                value={formData.description}
-                onChange={(e) => handleInputChange('description', e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all resize-none"
-              />
-              <div className="text-right text-[11px] text-slate-400 font-mono">
-                {formData.description.length} / 255
-              </div>
-            </div>
-
-            {/* 4. STATUS */}
-            <div className="space-y-1.5 text-xs">
-              <label className="block font-semibold text-slate-700">Status</label>
-              <select
-                value={formData.status}
-                onChange={(e) => handleInputChange('status', e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all cursor-pointer"
-              >
-                <option value="AKTIF">Aktif</option>
-                <option value="NONAKTIF">Tidak Aktif</option>
-              </select>
-            </div>
-
-            {/* Bottom Action Buttons inside card (aligned right) */}
-            <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-100">
-              <button
-                type="button"
-                onClick={() => navigate('/admin/master-data?tab=brands')}
-                className="px-5 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 text-xs font-semibold transition-colors cursor-pointer shadow-xs"
-              >
-                Batal
-              </button>
-              <button
-                type="submit"
-                disabled={submitting || !formData.name.trim()}
-                className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-md shadow-blue-600/20 flex items-center gap-2 transition-all cursor-pointer disabled:opacity-50 active:scale-98"
-              >
-                <Save className="w-4 h-4" />
-                <span>{submitting ? 'Menyimpan...' : 'Simpan Merek'}</span>
-              </button>
-            </div>
-
+            <h2 className="text-sm font-bold text-slate-900">Informasi Merek</h2>
           </div>
 
-        </div>
-
-        {/* RIGHT COLUMN (5 COLS): RINGKASAN MEREK */}
-        <div className="lg:col-span-5 space-y-6">
-          
-          <div className="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-6 space-y-5 sticky top-6">
-            
-            {/* Card Header */}
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-              <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
-                  <Tag className="w-4 h-4" />
-                </div>
-                <h2 className="text-xs font-bold text-slate-900 uppercase tracking-wider">Ringkasan Merek</h2>
-              </div>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800 border border-blue-200">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
-                <span>Merek</span>
+          {/* 1. KODE MEREK */}
+          <div className="space-y-1.5 text-xs">
+            <div className="flex items-center justify-between">
+              <label className="block font-semibold text-slate-700">Kode Merek</label>
+              <span className="text-[11px] text-slate-400 flex items-center gap-1">
+                <Lock className="w-3 h-3 text-slate-400" /> Dibuat Otomatis
               </span>
             </div>
+            <input
+              type="text"
+              readOnly
+              value={formData.code}
+              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-100/80 border border-slate-200 text-slate-600 font-mono font-bold text-xs cursor-not-allowed select-none"
+            />
+          </div>
 
-            {/* Dark Receipt-style Summary Details */}
-            <div className="p-4 rounded-2xl bg-slate-900 text-white space-y-4 shadow-inner">
-              
-              <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                <div>
-                  <span className="text-[10px] text-slate-400 uppercase font-bold block">Kode Merek</span>
-                  <span className="font-mono text-xs font-bold text-blue-400">{formData.code || 'BRD-XXX'}</span>
-                </div>
-                <div className="text-right">
-                  <span className="text-[10px] text-slate-400 uppercase font-bold block">Status</span>
-                  <span className={`font-mono text-xs font-bold ${formData.status === 'AKTIF' ? 'text-emerald-400' : 'text-slate-400'}`}>
-                    {formData.status === 'AKTIF' ? 'Aktif' : 'Non-Aktif'}
-                  </span>
-                </div>
-              </div>
+          {/* 2. NAMA MEREK */}
+          <div className="space-y-1.5 text-xs">
+            <label className="block font-semibold text-slate-700">
+              Nama Merek
+            </label>
+            <input
+              type="text"
+              required
+              value={formData.name}
+              onChange={(e) => handleInputChange('name', e.target.value)}
+              className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all ${
+                errors.name ? 'border-rose-300' : 'border-slate-200'
+              }`}
+            />
+            {errors.name && <span className="text-[11px] text-rose-500 font-medium block">{errors.name}</span>}
+          </div>
 
-              <div className="space-y-1 text-xs">
-                <span className="text-[10px] text-slate-400 uppercase font-bold block">Nama Merek / Brand</span>
-                <span className="font-bold text-slate-100 block text-sm leading-tight">
-                  {formData.name.trim() || 'Belum diisi'}
-                </span>
-              </div>
-
-              <div className="space-y-1 pt-2 border-t border-slate-800 text-xs">
-                <span className="text-[10px] text-slate-400 uppercase font-bold block">Deskripsi & Catatan</span>
-                <p className="text-slate-300 text-[11px] leading-relaxed italic">
-                  {formData.description.trim() || 'Tidak ada deskripsi tambahan.'}
-                </p>
-              </div>
-
+          {/* 3. DESKRIPSI (OPSIONAL) */}
+          <div className="space-y-1.5 text-xs">
+            <label className="block font-semibold text-slate-700">Deskripsi</label>
+            <textarea
+              rows={4}
+              maxLength={255}
+              value={formData.description}
+              onChange={(e) => handleInputChange('description', e.target.value)}
+              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all resize-none"
+            />
+            <div className="text-right text-[11px] text-slate-400 font-mono">
+              {formData.description.length} / 255
             </div>
+          </div>
 
+          {/* 4. STATUS */}
+          <div className="space-y-1.5 text-xs">
+            <label className="block font-semibold text-slate-700">Status</label>
+            <select
+              value={formData.status}
+              onChange={(e) => handleInputChange('status', e.target.value)}
+              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all cursor-pointer"
+            >
+              <option value="AKTIF">Aktif</option>
+              <option value="NONAKTIF">Tidak Aktif</option>
+            </select>
+          </div>
+
+          {/* Bottom Action Buttons inside card (aligned right) */}
+          <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-100">
+            <button
+              type="button"
+              onClick={() => navigate('/admin/master-data?tab=brands')}
+              className="px-5 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 text-xs font-semibold transition-colors cursor-pointer shadow-xs"
+            >
+              Batal
+            </button>
+            <button
+              type="submit"
+              disabled={submitting || !formData.name.trim()}
+              className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-md shadow-blue-600/20 flex items-center gap-2 transition-all cursor-pointer disabled:opacity-50 active:scale-98"
+            >
+              <Save className="w-4 h-4" />
+              <span>{submitting ? 'Menyimpan...' : 'Simpan Merek'}</span>
+            </button>
           </div>
 
         </div>
