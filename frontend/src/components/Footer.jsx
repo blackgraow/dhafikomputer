@@ -75,7 +75,15 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-blue-400 flex-shrink-0 mt-0.5" />
-                <span>Jl. Purnawarman No.13-15, Bandung 40117</span>
+                <a
+                  href="https://maps.app.goo.gl/vPcPGtxpRkeB8PL36"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-400 transition-colors"
+                  title="Buka lokasi di Google Maps"
+                >
+                  Bandung Electronics Center, Bandung BEC, Blk. F No.17a Lt.1, Babakan Ciamis, Kec. Sumur Bandung, Kota Bandung, Jawa Barat 40117
+                </a>
               </li>
             </ul>
           </div>

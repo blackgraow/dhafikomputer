@@ -183,7 +183,7 @@ const AdminReportPrintPage = () => {
               </h1>
               <p className="text-[11px] text-slate-800 leading-snug mt-0.5 max-w-lg">
                 Pusat Inventaris & Penjualan Laptop Baru & Second Terpercaya<br />
-                Jl. Purnawarman No. 13-15, Babakan Ciamis, Kec. Sumur Bandung, Kota Bandung, Jawa Barat 40117<br />
+                Bandung Electronics Center, Bandung BEC, Blk. F No.17a Lt.1, Babakan Ciamis, Kec. Sumur Bandung, Kota Bandung, Jawa Barat 40117<br />
                 Telp / WhatsApp: 0896-0903-3525 | Email: dhafionline18@gmail.com
               </p>
             </div>

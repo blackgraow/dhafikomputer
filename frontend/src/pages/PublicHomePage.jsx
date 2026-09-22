@@ -712,17 +712,23 @@ const PublicHomePage = () => {
               <div className="space-y-4">
                 
                 {/* Alamat (Clickable to Google Maps) */}
-                <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100">
+                <a
+                  href="https://maps.app.goo.gl/vPcPGtxpRkeB8PL36"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3.5 group cursor-pointer"
+                  title="Buka lokasi di Google Maps"
+                >
+                  <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div>
                     <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Alamat</span>
-                    <p className="text-sm font-semibold text-slate-800 mt-0.5">
-                      Jl. Purnawarman No.13-15, Babakan Ciamis, Kec. Sumur Bandung, Kota Bandung, Jawa Barat 40117
+                    <p className="text-sm font-semibold text-slate-800 group-hover:text-blue-600 transition-colors mt-0.5">
+                      Bandung Electronics Center, Bandung BEC, Blk. F No.17a Lt.1, Babakan Ciamis, Kec. Sumur Bandung, Kota Bandung, Jawa Barat 40117
                     </p>
                   </div>
-                </div>
+                </a>
 
                 {/* Jam Operasional */}
                 <div className="flex items-start gap-3.5">
@@ -785,7 +791,7 @@ const PublicHomePage = () => {
 
             {/* Right: Interactive Google Maps Store Location Card (Fully Clickable) */}
             <a
-              href="https://www.google.com/maps/search/?api=1&query=Jl.+Purnawarman+No.13-15,+Babakan+Ciamis,+Kec.+Sumur+Bandung,+Kota+Bandung,+Jawa+Barat+40117"
+              href="https://maps.app.goo.gl/vPcPGtxpRkeB8PL36"
               target="_blank"
               rel="noopener noreferrer"
               className="lg:col-span-6 rounded-2xl bg-white border border-slate-200 p-3 shadow-card hover:shadow-card-hover hover:border-blue-300 transition-all block group cursor-pointer"
