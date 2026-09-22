@@ -11,7 +11,7 @@ const getLaptops = async (req, res) => {
       source_type,
       status,
       page = 1,
-      limit = 10,
+      limit = 12,
       sort_by = 'id',
       sort_dir = 'DESC'
     } = req.query;

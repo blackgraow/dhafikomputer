@@ -55,7 +55,7 @@ const AdminLaptopsPage = () => {
   const [dealers, setDealers] = useState([]);
 
   const [loading, setLoading] = useState(true);
-  const [pagination, setPagination] = useState({ current_page: 1, total_pages: 1, total_items: 0, limit: 10 });
+  const [pagination, setPagination] = useState({ current_page: 1, total_pages: 1, total_items: 0, limit: 12 });
 
   // Filter & Search & Sort State
   const [search, setSearch] = useState('');
@@ -185,7 +185,7 @@ const AdminLaptopsPage = () => {
     try {
       const params = {
         page: currentPage,
-        limit: 10
+        limit: 12
       };
       if (search.trim()) params.search = search.trim();
       if (filterBrand) params.brand_id = filterBrand;
@@ -216,7 +216,7 @@ const AdminLaptopsPage = () => {
             current_page: res.data.pagination.current_page || 1,
             total_pages: res.data.pagination.total_pages || 1,
             total_items: res.data.pagination.total_items ?? items.length,
-            limit: res.data.pagination.limit || res.data.pagination.per_page || 10
+            limit: res.data.pagination.limit || res.data.pagination.per_page || 12
           });
         }
       }
@@ -967,9 +967,9 @@ const AdminLaptopsPage = () => {
         <div className="p-4 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-slate-600 bg-slate-50/50">
           <div>
             Menampilkan <strong className="text-slate-900 font-mono">
-              {laptops.length === 0 ? 0 : (pagination.current_page - 1) * (pagination.limit || 10) + 1}
+              {laptops.length === 0 ? 0 : (pagination.current_page - 1) * (pagination.limit || 12) + 1}
             </strong> sampai <strong className="text-slate-900 font-mono">
-              {laptops.length === 0 ? 0 : Math.min(pagination.current_page * (pagination.limit || 10), pagination.total_items ?? laptops.length)}
+              {laptops.length === 0 ? 0 : Math.min(pagination.current_page * (pagination.limit || 12), pagination.total_items ?? laptops.length)}
             </strong> dari <strong className="text-slate-900 font-mono">{pagination.total_items ?? laptops.length}</strong> data
           </div>
 
