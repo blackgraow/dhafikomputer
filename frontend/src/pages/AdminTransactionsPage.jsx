@@ -354,7 +354,7 @@ const AdminTransactionsPage = () => {
 
               {sourceType === 'MASTER_DEALER' && (
                 <div>
-                  <label className="block text-slate-600 font-medium mb-1">Pilih Master Dealer *</label>
+                  <label className="block text-slate-600 font-medium mb-1">Pilih Master Dealer</label>
                   <select
                     value={selectedMD}
                     onChange={(e) => setSelectedMD(e.target.value)}
@@ -369,7 +369,7 @@ const AdminTransactionsPage = () => {
 
               {sourceType === 'DEALER' && (
                 <div>
-                  <label className="block text-slate-600 font-medium mb-1">Pilih Dealer Partner *</label>
+                  <label className="block text-slate-600 font-medium mb-1">Pilih Dealer Partner</label>
                   <select
                     value={selectedDealer}
                     onChange={(e) => setSelectedDealer(e.target.value)}
@@ -384,7 +384,7 @@ const AdminTransactionsPage = () => {
 
               {sourceType === 'CUSTOMER' && (
                 <div>
-                  <label className="block text-slate-600 font-medium mb-1">Nama Customer / Pemilik *</label>
+                  <label className="block text-slate-600 font-medium mb-1">Nama Customer / Pemilik</label>
                   <input
                     type="text"
                     required
@@ -420,7 +420,7 @@ const AdminTransactionsPage = () => {
                 return (
                   <div key={idx} className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 grid grid-cols-12 gap-3 items-center">
                     <div className="col-span-12 sm:col-span-5">
-                      <label className="block text-[10px] text-slate-500 font-medium mb-1">Pilih Laptop *</label>
+                      <label className="block text-[10px] text-slate-500 font-medium mb-1">Pilih Laptop</label>
                       <select
                         required
                         value={item.laptop_id}
@@ -437,7 +437,7 @@ const AdminTransactionsPage = () => {
                     </div>
 
                     <div className="col-span-6 sm:col-span-2">
-                      <label className="block text-[10px] text-slate-500 font-medium mb-1">Qty Masuk *</label>
+                      <label className="block text-[10px] text-slate-500 font-medium mb-1">Qty Masuk</label>
                       <input
                         type="number"
                         min="1"
@@ -547,7 +547,7 @@ const AdminTransactionsPage = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-600 font-medium mb-1">Nama Pembeli *</label>
+                  <label className="block text-slate-600 font-medium mb-1">Nama Pembeli</label>
                   <input
                     type="text"
                     required
@@ -595,7 +595,7 @@ const AdminTransactionsPage = () => {
                 return (
                   <div key={idx} className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 grid grid-cols-12 gap-3 items-center">
                     <div className="col-span-12 sm:col-span-5">
-                      <label className="block text-[10px] text-slate-500 font-medium mb-1">Pilih Laptop *</label>
+                      <label className="block text-[10px] text-slate-500 font-medium mb-1">Pilih Laptop</label>
                       <select
                         required
                         value={item.laptop_id}

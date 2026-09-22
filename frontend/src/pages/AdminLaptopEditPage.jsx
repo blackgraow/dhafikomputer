@@ -248,7 +248,7 @@ const AdminLaptopEditPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) {
-      showToast('Mohon lengkapi seluruh field wajib (*)', 'error');
+      showToast('Mohon lengkapi seluruh field wajib yang masih kosong', 'error');
       return;
     }
 

@@ -212,7 +212,7 @@ const AdminLaptopCreatePage = () => {
   const handleSubmit = async (e) => {
     if (e) e.preventDefault();
     if (!validateForm()) {
-      showToast('Mohon lengkapi seluruh field wajib bertanda bintang (*)', 'error');
+      showToast('Mohon lengkapi seluruh field wajib yang masih kosong.', 'error');
       return;
     }
 
@@ -525,7 +525,7 @@ const AdminLaptopCreatePage = () => {
             {formData.condition_type === 'SECOND' && formData.source_type === 'PEMILIK' && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3 border-t border-slate-100">
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1.5">Nama Pemilik / Customer *</label>
+                  <label className="block font-semibold text-slate-700 mb-1.5">Nama Pemilik / Customer</label>
                   <input
                     type="text"
                     placeholder="Contoh: Budi Santoso"

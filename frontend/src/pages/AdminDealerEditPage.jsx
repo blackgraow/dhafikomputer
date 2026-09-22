@@ -96,7 +96,7 @@ const AdminDealerEditPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) {
-      showToast('Mohon lengkapi field wajib (*)', 'error');
+      showToast('Mohon lengkapi field wajib', 'error');
       return;
     }
 
@@ -284,6 +284,7 @@ const AdminDealerEditPage = () => {
             <textarea
               rows={3}
               maxLength={255}
+              placeholder="Tulis catatan atau keterangan tambahan (opsional)..."
               value={formData.notes}
               onChange={(e) => handleInputChange('notes', e.target.value)}
               className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all resize-none"

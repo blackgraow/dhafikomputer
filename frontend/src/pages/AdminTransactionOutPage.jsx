@@ -292,12 +292,9 @@ const AdminTransactionOutPage = () => {
       </div>
 
       {/* ========================================================
-          2. TWO-COLUMN LAYOUT: FORM UTAMA & LIVE RECEIPT PREVIEW
+          2. FORM TRANSAKSI BARANG KELUAR
           ======================================================== */}
-      <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        
-        {/* LEFT COLUMN (7 COLS): FORM PENGELUARAN */}
-        <div className="lg:col-span-7 space-y-6">
+      <form onSubmit={handleSubmit} className="max-w-4xl space-y-6">
           
           {/* Card 1: Identitas & Tujuan Pengeluaran */}
           <div className="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-6 space-y-5">
@@ -449,7 +446,7 @@ const AdminTransactionOutPage = () => {
             {destinationType === 'DEALER' && (
               <div className="p-4 rounded-xl bg-indigo-50/40 border border-indigo-100 space-y-2 text-xs">
                 <div className="flex items-center justify-between">
-                  <label className="font-semibold text-slate-700">Pilih Dealer Toko Rekanan *</label>
+                  <label className="font-semibold text-slate-700">Pilih Dealer Toko Rekanan</label>
                   <Link to="/admin/master-data/dealers/create" target="_blank" className="text-[11px] text-indigo-600 hover:underline font-semibold flex items-center gap-1">
                     + Tambah Dealer
                   </Link>
@@ -636,6 +633,17 @@ const AdminTransactionOutPage = () => {
               })}
             </div>
 
+            {/* Inline Total Summary */}
+            <div className="pt-3 border-t border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs bg-slate-50/70 p-3.5 rounded-xl">
+              <div className="text-slate-600 font-medium">
+                Total Item: <span className="font-bold text-slate-800 font-mono">{totalQuantity} Unit</span>
+              </div>
+              <div className="text-slate-700 font-semibold flex items-center gap-2">
+                <span>Total Nilai Keluar:</span>
+                <span className="font-mono text-sm sm:text-base font-extrabold text-blue-600">{formatRupiah(totalAmount)}</span>
+              </div>
+            </div>
+
           </div>
 
           {/* Card 3: Catatan Transaksi */}
@@ -682,95 +690,6 @@ const AdminTransactionOutPage = () => {
               )}
             </button>
           </div>
-
-        </div>
-
-        {/* RIGHT COLUMN (5 COLS): LIVE RECEIPT & PENJUALAN PREVIEW */}
-        <div className="lg:col-span-5 space-y-6">
-          
-          <div className="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-6 space-y-5 sticky top-6">
-            
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-              <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
-                  <Receipt className="w-4 h-4" />
-                </div>
-                <h2 className="text-xs font-bold text-slate-900 uppercase tracking-wider">Ringkasan Penjualan</h2>
-              </div>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800 border border-blue-200">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
-                <span>Stok -</span>
-              </span>
-            </div>
-
-            {/* Receipt Summary Details */}
-            <div className="p-4 rounded-2xl bg-slate-900 text-white space-y-4 shadow-inner">
-              
-              <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                <div>
-                  <span className="text-[10px] text-slate-400 uppercase font-bold block">Dokumen</span>
-                  <span className="font-mono text-xs font-bold text-blue-400">{transactionCode}</span>
-                </div>
-                <div className="text-right">
-                  <span className="text-[10px] text-slate-400 uppercase font-bold block">Tanggal</span>
-                  <span className="font-mono text-xs text-slate-300">{transactionDate}</span>
-                </div>
-              </div>
-
-              <div className="space-y-1 text-xs">
-                <span className="text-[10px] text-slate-400 uppercase font-bold block">Tujuan Pengeluaran</span>
-                <span className="font-bold text-slate-100 block leading-tight">{getDestinationName()}</span>
-              </div>
-
-              {/* Items Breakdown in Receipt */}
-              <div className="space-y-2 pt-2 border-t border-slate-800 text-xs">
-                <span className="text-[10px] text-slate-400 uppercase font-bold block">Rincian Barang Terjual</span>
-                
-                {items.filter(it => it.laptop_id).length === 0 ? (
-                  <p className="text-slate-500 text-[11px] italic">Belum ada item laptop yang dipilih.</p>
-                ) : (
-                  <div className="space-y-2 max-h-48 overflow-y-auto pr-1">
-                    {items.filter(it => it.laptop_id).map((it, idx) => {
-                      const lap = laptops.find(l => l.id === parseInt(it.laptop_id, 10));
-                      const qty = parseInt(it.quantity, 10) || 0;
-                      const price = parseFloat(it.unit_price) || 0;
-                      return (
-                        <div key={idx} className="flex items-start justify-between gap-2 text-[11px] pb-1.5 border-b border-slate-800/60 last:border-0">
-                          <div className="min-w-0">
-                            <span className="font-medium text-slate-200 block truncate">{lap?.name || 'Laptop'}</span>
-                            <span className="text-[10px] text-slate-400 font-mono">
-                              {qty} unit × {formatRupiah(price)}
-                            </span>
-                          </div>
-                          <span className="font-mono font-bold text-slate-100 shrink-0">
-                            {formatRupiah(qty * price)}
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-
-              {/* Grand Total */}
-              <div className="pt-3 border-t border-slate-800 space-y-1.5">
-                <div className="flex items-center justify-between text-xs text-slate-400">
-                  <span>Total Kuantitas</span>
-                  <span className="font-mono font-bold text-white">{totalQuantity} Unit</span>
-                </div>
-                <div className="flex items-center justify-between text-sm pt-1 border-t border-slate-800">
-                  <span className="font-bold text-slate-200">Total Nilai Keluar</span>
-                  <span className="font-mono font-extrabold text-blue-400 text-base">
-                    {formatRupiah(totalAmount)}
-                  </span>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
 
       </form>
 

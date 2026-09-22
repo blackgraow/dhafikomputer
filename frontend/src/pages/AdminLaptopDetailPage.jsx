@@ -928,7 +928,7 @@ const AdminLaptopDetailPage = () => {
                 <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">1. Informasi Utama</span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block font-semibold text-slate-700 mb-1">Kode Laptop *</label>
+                    <label className="block font-semibold text-slate-700 mb-1">Kode Laptop</label>
                     <input
                       type="text"
                       required
@@ -938,7 +938,7 @@ const AdminLaptopDetailPage = () => {
                     />
                   </div>
                   <div>
-                    <label className="block font-semibold text-slate-700 mb-1">Nama Laptop *</label>
+                    <label className="block font-semibold text-slate-700 mb-1">Nama Laptop</label>
                     <input
                       type="text"
                       required
@@ -948,7 +948,7 @@ const AdminLaptopDetailPage = () => {
                     />
                   </div>
                   <div>
-                    <label className="block font-semibold text-slate-700 mb-1">Merek *</label>
+                    <label className="block font-semibold text-slate-700 mb-1">Merek</label>
                     <select
                       required
                       value={formData.brand_id}
@@ -960,7 +960,7 @@ const AdminLaptopDetailPage = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="block font-semibold text-slate-700 mb-1">Kategori *</label>
+                    <label className="block font-semibold text-slate-700 mb-1">Kategori</label>
                     <select
                       required
                       value={formData.category_id}
@@ -979,7 +979,7 @@ const AdminLaptopDetailPage = () => {
                 <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">2. Jenis Barang & Sumber Pengadaan</span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block font-semibold text-slate-700 mb-1">Jenis Barang *</label>
+                    <label className="block font-semibold text-slate-700 mb-1">Jenis Barang</label>
                     <select
                       value={formData.condition_type}
                       onChange={(e) => {
@@ -999,7 +999,7 @@ const AdminLaptopDetailPage = () => {
 
                   {formData.condition_type === 'BARU' ? (
                     <div>
-                      <label className="block font-semibold text-slate-700 mb-1">Master Dealer *</label>
+                      <label className="block font-semibold text-slate-700 mb-1">Master Dealer</label>
                       <select
                         required
                         value={formData.master_dealer_id}
@@ -1012,7 +1012,7 @@ const AdminLaptopDetailPage = () => {
                     </div>
                   ) : (
                     <div>
-                      <label className="block font-semibold text-slate-700 mb-1">Asal Pengadaan Second *</label>
+                      <label className="block font-semibold text-slate-700 mb-1">Asal Pengadaan Second</label>
                       <select
                         value={formData.source_type}
                         onChange={(e) => setFormData({ ...formData, source_type: e.target.value })}
@@ -1092,7 +1092,7 @@ const AdminLaptopDetailPage = () => {
                 <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">4. Inventaris & Harga Jual</span>
                 <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
                   <div>
-                    <label className="block font-semibold text-slate-700 mb-1">Harga Beli / Modal *</label>
+                    <label className="block font-semibold text-slate-700 mb-1">Harga Beli / Modal</label>
                     <input
                       type="number"
                       required
@@ -1102,7 +1102,7 @@ const AdminLaptopDetailPage = () => {
                     />
                   </div>
                   <div>
-                    <label className="block font-semibold text-slate-700 mb-1">Harga Jual *</label>
+                    <label className="block font-semibold text-slate-700 mb-1">Harga Jual</label>
                     <input
                       type="number"
                       required
@@ -1121,7 +1121,7 @@ const AdminLaptopDetailPage = () => {
                     />
                   </div>
                   <div>
-                    <label className="block font-semibold text-slate-700 mb-1">Stok Fisik *</label>
+                    <label className="block font-semibold text-slate-700 mb-1">Stok Fisik</label>
                     <input
                       type="number"
                       required

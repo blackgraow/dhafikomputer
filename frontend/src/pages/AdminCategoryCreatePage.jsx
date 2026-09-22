@@ -87,7 +87,7 @@ const AdminCategoryCreatePage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) {
-      showToast('Mohon lengkapi field wajib (*)', 'error');
+      showToast('Mohon lengkapi field wajib', 'error');
       return;
     }
 
